@@ -361,13 +361,37 @@ body{font-family:"Inter",system-ui,sans-serif;background:var(--bg);color:var(--t
 
 @media(max-width:1100px){.kpi-hero-row{grid-template-columns:1fr 1fr}.kpi-row-sm{grid-template-columns:1fr 1fr}.house-kpis{grid-template-columns:1fr 1fr}.hof-records-grid{grid-template-columns:1fr 1fr}.daily-kpi-strip{grid-template-columns:1fr 1fr}}
 @media(max-width:900px){.race-lane{grid-template-columns:44px 12px 1fr;gap:10px;padding:14px 16px}.race-lane .race-right-block{display:none}.race-lane .race-track-col{grid-column:1/-1}.kpi-hero-row{grid-template-columns:1fr}.kpi-row-sm{grid-template-columns:1fr 1fr}.podium-row{grid-template-columns:1fr}.panel-inner{padding:18px 14px 60px}.urgency-bar{padding:10px 16px;overflow-x:auto}.house-kpis{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.nav{padding:0 14px;gap:10px}.nav-tab .t-lbl{display:none}.nav-tab{padding:8px 10px}.hero-pct{font-size:64px}.hero-name{font-size:28px}.hero-card{grid-template-columns:1fr;padding:22px}.hof-records-grid{grid-template-columns:1fr}.daily-kpi-strip{grid-template-columns:1fr}}
-
 .update-indicator{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);font-weight:600;white-space:nowrap;padding:4px 10px;border-radius:8px;background:rgba(0,0,0,.03);border:1px solid var(--bdr);margin-right:6px;transition:all .3s}
 .update-indicator span:first-child{font-size:9px}
 .update-indicator.fresh{color:var(--sg);border-color:rgba(141,186,56,.25);background:var(--sg-bg)}
 .update-indicator.aging{color:#B87020;border-color:rgba(238,157,46,.25);background:var(--sy-bg)}
 .update-indicator.stale{color:var(--sr);border-color:rgba(229,57,53,.2);background:var(--sr-bg)}
+
+
+.a-sel.cat-internal{border-color:rgba(99,110,250,.35);color:#3d52d5;background:rgba(99,110,250,.05)}
+.a-sel.cat-web{border-color:rgba(20,184,166,.35);color:#0d9488;background:rgba(20,184,166,.05)}
+.a-sel.cat-inactive{border-color:rgba(148,163,184,.35);color:var(--muted);background:rgba(148,163,184,.06)}
+.channel-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:24px;background:var(--wh);border:1px solid var(--bdr2);border-radius:16px;overflow:hidden}
+.channel-item{padding:14px 18px;border-right:1px solid var(--bdr);position:relative}
+.channel-item:last-child{border-right:none}
+.channel-item::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
+.channel-team::before{background:var(--gd)}.channel-internal::before{background:#6366f1}
+.channel-house::before{background:var(--or)}.channel-web::before{background:#14b8a6}
+.channel-ico{font-size:16px;margin-bottom:4px;display:block}
+.channel-lbl{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.channel-val{font-size:18px;font-weight:900;color:var(--tx);font-variant-numeric:tabular-nums;line-height:1}
+.channel-pct{font-size:10px;color:var(--sub);margin-top:2px;font-weight:600}
+.internal-section{background:linear-gradient(135deg,rgba(99,110,250,.06),rgba(99,110,250,.01));border:1px solid rgba(99,110,250,.2);border-radius:20px;padding:22px;margin-bottom:24px;position:relative;overflow:hidden}
+.internal-section::before{content:"🔄";position:absolute;right:20px;top:14px;font-size:60px;opacity:.06;pointer-events:none}
+.web-section{background:linear-gradient(135deg,rgba(20,184,166,.07),rgba(20,184,166,.01));border:1px solid rgba(20,184,166,.2);border-radius:20px;padding:22px;margin-bottom:24px;position:relative;overflow:hidden}
+.web-section::before{content:"🌐";position:absolute;right:20px;top:14px;font-size:60px;opacity:.06;pointer-events:none}
+.sub-section-title{font-size:16px;font-weight:900;color:var(--tx);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sub-section-badge{font-size:10px;font-weight:800;padding:3px 10px;border-radius:100px}
+.internal-badge{background:rgba(99,110,250,.1);border:1px solid rgba(99,110,250,.25);color:#3d52d5}
+.web-badge{background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.25);color:#0d9488}
+.meta-warning{background:rgba(238,157,46,.08);border:1px solid rgba(238,157,46,.3);border-radius:12px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;color:#B87020}
+@media(max-width:900px){.channel-strip{grid-template-columns:1fr 1fr}}
+
 
 .pin-overlay{position:fixed;inset:0;background:rgba(28,53,41,.85);backdrop-filter:blur(6px);z-index:900;display:flex;align-items:center;justify-content:center}
 .pin-overlay.hidden{display:none}
@@ -375,18 +399,48 @@ body{font-family:"Inter",system-ui,sans-serif;background:var(--bg);color:var(--t
 @keyframes pinPop{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
 @keyframes pinShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 .pin-lock-ico{font-size:44px;margin-bottom:14px;display:block}
-.pin-title{font-size:20px;font-weight:900;color:var(--tx);margin-bottom:6px;letter-spacing:-.3px}
-.pin-subtitle{font-size:13px;color:var(--sub);margin-bottom:24px;font-weight:500}
+.pin-title{font-size:20px;font-weight:900;color:var(--tx);margin-bottom:6px}
+.pin-subtitle{font-size:13px;color:var(--sub);margin-bottom:24px}
 .pin-input{width:100%;text-align:center;font-size:32px;font-weight:900;letter-spacing:10px;color:var(--gd);border:2px solid var(--bdr);border-radius:12px;padding:14px;font-family:"DM Mono",monospace;outline:none;background:var(--bg);transition:border-color .2s;-webkit-text-security:disc}
 .pin-input:focus{border-color:var(--gl)}
 .pin-error{font-size:12px;color:var(--sr);font-weight:700;margin-top:10px;min-height:18px}
 .pin-actions{display:flex;gap:10px;margin-top:20px}
-.pin-btn-cancel{flex:1;padding:12px;border-radius:10px;border:1px solid var(--bdr);background:var(--wh);color:var(--sub);font-size:13px;font-weight:600;cursor:pointer;font-family:"Inter",sans-serif;transition:all .15s}
+.pin-btn-cancel{flex:1;padding:12px;border-radius:10px;border:1px solid var(--bdr);background:var(--wh);color:var(--sub);font-size:13px;font-weight:600;cursor:pointer;font-family:"Inter",sans-serif}
 .pin-btn-cancel:hover{border-color:var(--bdr2);color:var(--tx)}
-.pin-btn-enter{flex:2;padding:12px;border-radius:10px;border:none;background:var(--gd);color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:"Inter",sans-serif;box-shadow:0 2px 8px rgba(42,87,71,.25);transition:all .15s}
+.pin-btn-enter{flex:2;padding:12px;border-radius:10px;border:none;background:var(--gd);color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:"Inter",sans-serif}
 .pin-btn-enter:hover{background:#1e4034}
 .pin-lock-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 
+.a-sel.cat-internal{border-color:rgba(99,110,250,.35);color:#3d52d5;background:rgba(99,110,250,.05)}
+.a-sel.cat-web{border-color:rgba(20,184,166,.35);color:#0d9488;background:rgba(20,184,166,.05)}
+.a-sel.cat-inactive{border-color:rgba(148,163,184,.35);color:var(--muted);background:rgba(148,163,184,.06)}
+.channel-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:24px;background:var(--wh);border:1px solid var(--bdr2);border-radius:16px;overflow:hidden}
+.channel-item{padding:14px 18px;border-right:1px solid var(--bdr);position:relative}
+.channel-item:last-child{border-right:none}
+.channel-item::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
+.channel-team::before{background:var(--gd)}.channel-internal::before{background:#6366f1}
+.channel-house::before{background:var(--or)}.channel-web::before{background:#14b8a6}
+.channel-ico{font-size:16px;margin-bottom:4px;display:block}
+.channel-lbl{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.channel-val{font-size:18px;font-weight:900;color:var(--tx);font-variant-numeric:tabular-nums;line-height:1}
+.channel-pct{font-size:10px;color:var(--sub);margin-top:2px;font-weight:600}
+.internal-section{background:linear-gradient(135deg,rgba(99,110,250,.06),rgba(99,110,250,.01));border:1px solid rgba(99,110,250,.2);border-radius:20px;padding:22px;margin-bottom:24px;position:relative;overflow:hidden}
+.internal-section::before{content:"F504";position:absolute;right:20px;top:14px;font-size:60px;opacity:.06;pointer-events:none}
+.web-section{background:linear-gradient(135deg,rgba(20,184,166,.07),rgba(20,184,166,.01));border:1px solid rgba(20,184,166,.2);border-radius:20px;padding:22px;margin-bottom:24px;position:relative;overflow:hidden}
+.web-section::before{content:"F310";position:absolute;right:20px;top:14px;font-size:60px;opacity:.06;pointer-events:none}
+.sub-section-title{font-size:16px;font-weight:900;color:var(--tx);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sub-section-badge{font-size:10px;font-weight:800;padding:3px 10px;border-radius:100px}
+.internal-badge{background:rgba(99,110,250,.1);border:1px solid rgba(99,110,250,.25);color:#3d52d5}
+.web-badge{background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.25);color:#0d9488}
+.meta-warning{background:rgba(238,157,46,.08);border:1px solid rgba(238,157,46,.3);border-radius:12px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;color:#B87020}
+
+.update-indicator{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);font-weight:600;white-space:nowrap;padding:4px 10px;border-radius:8px;background:rgba(0,0,0,.03);border:1px solid var(--bdr);margin-right:6px;transition:all .3s}
+.update-indicator span:first-child{font-size:9px}
+.update-indicator.fresh{color:var(--sg);border-color:rgba(141,186,56,.25);background:var(--sg-bg)}
+.update-indicator.aging{color:#B87020;border-color:rgba(238,157,46,.25);background:var(--sy-bg)}
+.update-indicator.stale{color:var(--sr);border-color:rgba(229,57,53,.2);background:var(--sr-bg)}
+
+@media(max-width:600px){.nav{padding:0 14px;gap:10px}.nav-tab .t-lbl{display:none}.nav-tab{padding:8px 10px}.hero-pct{font-size:64px}.hero-name{font-size:28px}.hero-card{grid-template-columns:1fr;padding:22px}.hof-records-grid{grid-template-columns:1fr}.daily-kpi-strip{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -394,7 +448,7 @@ body{font-family:"Inter",system-ui,sans-serif;background:var(--bg);color:var(--t
 <div class="pin-overlay hidden" id="pin-modal">
   <div class="pin-box">
     <span class="pin-lock-ico">🔒</span>
-    <div class="pin-lock-badge">· Sabatier Supplies · Acceso Restringido ·</div>
+    <div class="pin-lock-badge">· Sabatier Supplies ·</div>
     <div class="pin-title" id="pin-modal-title">Área Restringida</div>
     <div class="pin-subtitle" id="pin-modal-sub">Ingresa el PIN para continuar</div>
     <input type="password" id="pin-input" class="pin-input" maxlength="6" placeholder="••••" onkeydown="if(event.key==='Enter')validatePin()">
@@ -540,44 +594,23 @@ var companyUnlocked = false;
 var adminUnlocked = false;
 var pendingTab = null;
 
-function showPinModal(tab) {
-  pendingTab = tab;
-  var titles = {company:"Company View", admin:"Admin"};
-  var el = document.getElementById("pin-modal");
-  var ti = document.getElementById("pin-modal-title");
-  var su = document.getElementById("pin-modal-sub");
-  var inp = document.getElementById("pin-input");
-  var err = document.getElementById("pin-error");
-  if(ti) ti.textContent = "Acceso a " + (titles[tab] || tab);
-  if(su) su.textContent = "Ingresa el PIN para continuar";
-  if(err) err.textContent = "";
-  if(inp) inp.value = "";
-  el.classList.remove("hidden");
-  setTimeout(function(){if(inp)inp.focus();}, 100);
+function showPinModal(tab){
+  pendingTab=tab;var titles={company:"Company View",admin:"Admin"};
+  var el=document.getElementById("pin-modal"),ti=document.getElementById("pin-modal-title"),su=document.getElementById("pin-modal-sub"),inp=document.getElementById("pin-input"),err=document.getElementById("pin-error");
+  if(ti)ti.textContent="Acceso a "+(titles[tab]||tab);if(su)su.textContent="Ingresa el PIN para continuar";if(err)err.textContent="";if(inp)inp.value="";
+  el.classList.remove("hidden");setTimeout(function(){if(inp)inp.focus();},100);
 }
-
-function cancelPin() {
-  document.getElementById("pin-modal").classList.add("hidden");
-  pendingTab = null;
-}
-
-function validatePin() {
-  var inp = document.getElementById("pin-input");
-  var err = document.getElementById("pin-error");
-  var input = inp ? inp.value : "";
-  var correctPin = pendingTab === "company" ? COMPANY_VIEW_PIN : ADMIN_PIN;
-  if (input === correctPin) {
-    if (pendingTab === "company") companyUnlocked = true;
-    if (pendingTab === "admin") adminUnlocked = true;
+function cancelPin(){document.getElementById("pin-modal").classList.add("hidden");pendingTab=null;}
+function validatePin(){
+  var inp=document.getElementById("pin-input"),err=document.getElementById("pin-error");
+  var input=inp?inp.value:"";var correctPin=pendingTab==="company"?COMPANY_VIEW_PIN:ADMIN_PIN;
+  if(input===correctPin){
+    if(pendingTab==="company")companyUnlocked=true;if(pendingTab==="admin")adminUnlocked=true;
     document.getElementById("pin-modal").classList.add("hidden");
-    var tab = pendingTab;
-    pendingTab = null;
-    switchTab(tab);
-  } else {
-    if(err) err.textContent = "PIN incorrecto. Intenta nuevamente.";
-    if(inp) { inp.value = ""; inp.focus(); }
-    var box = document.querySelector(".pin-box");
-    if(box){ box.style.animation="none"; setTimeout(function(){box.style.animation="pinShake .4s";},10); }
+    var tab=pendingTab;pendingTab=null;switchTab(tab);
+  }else{
+    if(err)err.textContent="PIN incorrecto. Intenta nuevamente.";if(inp){inp.value="";inp.focus();}
+    var box=document.querySelector(".pin-box");if(box){box.style.animation="none";setTimeout(function(){box.style.animation="pinShake .4s";},10);}
   }
 }
 
@@ -661,8 +694,12 @@ function vdCoReq(totSales,totMeta){var dias=parseInt(STATE.diasLaborables)||0;if
 function vdCoStatus(vda,vdr){if(vdr<=0)return{cls:"g",lbl:"EN RUTA",ico:"🟢"};var r=vda>0?vda/vdr:0;if(r>=1)return{cls:"g",lbl:"EN RUTA",ico:"🟢"};if(r>=0.85)return{cls:"y",lbl:"ATENCIÓN",ico:"🟡"};return{cls:"r",lbl:"FUERA DE RUTA",ico:"🔴"};}
 
 // ── FILTERS ─────────────────────────────────────────────
-function teamReps(){return STATE.reps.filter(function(r){return r.active&&r.category!=="house";}).sort(function(a,b){return pct(b)-pct(a);});}
+function isActive(r){return r.active&&r.category!=="inactive";}
+function teamReps(){return STATE.reps.filter(function(r){return r.active&&r.category==="team";}).sort(function(a,b){return pct(b)-pct(a);});}
+function internalReps(){return STATE.reps.filter(function(r){return r.active&&r.category==="internal";});}
 function houseReps(){return STATE.reps.filter(function(r){return r.active&&r.category==="house";});}
+function webReps(){return STATE.reps.filter(function(r){return r.active&&r.category==="web";});}
+function allActiveReps(){return STATE.reps.filter(function(r){return isActive(r);}); }
 
 // ── PERIOD / UI HELPERS ─────────────────────────────────
 
@@ -873,171 +910,79 @@ function renderRace(){
 
 // ══ TAB 2 — COMPANY VIEW ════════════════════════════════
 function renderCompany(){
-  var teamR=teamReps(),houseR=houseReps();
+  var teamR=teamReps(),internalR=internalReps(),houseR=houseReps(),webR=webReps();
   var el=document.getElementById("company-content");
-  if(!teamR.length&&!houseR.length){
+  if(!teamR.length&&!internalR.length&&!houseR.length&&!webR.length){
     el.innerHTML="<div class=\"empty-panel\"><span class=\"empty-panel-ico\">📊</span><h3>Sin datos disponibles</h3><p>Ve a <strong>⚙️ Admin</strong> para configurar el equipo.</p><button class=\"btn-goto-admin\" onclick=\"switchTab('admin')\">Ir a Admin →</button></div>";
     return;
   }
-  var tSalesT=teamR.reduce(function(s,r){return s+r.sales;},0);
-  var tMetaT=teamR.reduce(function(s,r){return s+r.meta;},0);
-  var tGPT=teamR.reduce(function(s,r){return s+r.gp;},0);
-  var tInvsT=teamR.reduce(function(s,r){return s+r.invs;},0);
-  var tStrT=teamR.reduce(function(s,r){return s+r.stretch;},0);
-  var tSalesH=houseR.reduce(function(s,r){return s+r.sales;},0);
-  var tInvsH=houseR.reduce(function(s,r){return s+r.invs;},0);
-  var tMetaH=houseR.reduce(function(s,r){return s+r.meta;},0);
-  var inc=STATE.includeHouseInTotals;
-  var dispSales=inc?tSalesT+tSalesH:tSalesT;
-  var repsMeta=inc?tMetaT+tMetaH:tMetaT;
-  var dispMeta=STATE.companyMeta>0?STATE.companyMeta:repsMeta;
-  var dispInvs=inc?tInvsT+tInvsH:tInvsT;
-  var usingCoMeta=STATE.companyMeta>0;
-  var coP=dispMeta>0?dispSales/dispMeta*100:0;
-  var coMg=dispSales>0?tGPT/dispSales*100:0;
-  var coDiff=dispSales-dispMeta;
-  var falta=Math.max(dispMeta-dispSales,0);
-  var coSc=status({sales:dispSales,meta:dispMeta,stretch:0,invs:0,gp:0});
+  function sum(arr,k){return arr.reduce(function(s,r){return s+(r[k]||0);},0);}
+  var tSalesT=sum(teamR,"sales"),tInvsT=sum(teamR,"invs"),tGPT=sum(teamR,"gp"),tStrT=sum(teamR,"stretch"),tMetaT=sum(teamR,"meta");
+  var tSalesI=sum(internalR,"sales"),tInvsI=sum(internalR,"invs");
+  var tSalesH=sum(houseR,"sales"),tInvsH=sum(houseR,"invs"),tMetaH=sum(houseR,"meta");
+  var tSalesW=sum(webR,"sales"),tInvsW=sum(webR,"invs");
+  var totSalesAll=tSalesT+tSalesI+tSalesH+tSalesW;
+  var totInvsAll=tInvsT+tInvsI+tInvsH+tInvsW;
+  var dispMeta=STATE.companyMeta;
+  var hasMeta=dispMeta>0;
+  var coP=hasMeta?totSalesAll/dispMeta*100:0;
+  var coDiff=totSalesAll-dispMeta;
+  var falta=hasMeta?Math.max(dispMeta-totSalesAll,0):0;
+  var coSc=hasMeta?status({sales:totSalesAll,meta:dispMeta,stretch:0,invs:0,gp:0}):"yellow";
   var coC=scColor(coSc);
+  var coMg=totSalesAll>0?tGPT/totSalesAll*100:0;
   var top=teamR.length?teamR[0]:null;
-  var totalEmpresa=tSalesT+tSalesH;
-  var housePct=totalEmpresa>0?tSalesH/totalEmpresa*100:0;
-
-  // Daily KPI
-  var coVdA=vdCoActual(dispSales);
-  var coVdR=vdCoReq(dispSales,dispMeta);
+  var coVdA=vdCoActual(totSalesAll);
+  var coVdR=hasMeta?vdCoReq(totSalesAll,dispMeta):0;
   var coVdSt=vdCoStatus(coVdA,coVdR);
   var coVdDiff=coVdA-coVdR;
-
-  // Hero KPIs
-  var heroKpi=
-    "<div class=\"kpi-hero-row\">"+
-    "<div class=\"kpi-hero accent-gd\"><div class=\"kpi-hero-bg\">$</div><span class=\"kpi-hero-ico\">💰</span><div class=\"kpi-hero-lbl\">Ventas Netas Compañía"+(inc?" · incl. Casa":"")+"</div><div class=\"kpi-hero-val\">"+fmtD(dispSales)+"</div><div class=\"kpi-hero-sub\">🎯 Meta General: "+fmtD(dispMeta)+(usingCoMeta?" ✓ configurada":" · suma de metas")+"</div><div class=\"kpi-hero-badge\" style=\"background:rgba(42,87,71,.1);color:var(--gd)\">"+esc(STATE.mes)+" "+STATE.anio+"</div></div>"+
-    "<div class=\"kpi-hero accent-gl\"><div class=\"kpi-hero-bg\">%</div><span class=\"kpi-hero-ico\">📈</span><div class=\"kpi-hero-lbl\">% Cumplimiento Compañía</div><div class=\"kpi-hero-val\" style=\"color:"+coC+"\">"+fmtPct(coP)+"</div><div class=\"kpi-hero-sub\">"+(coDiff>=0?"↑ +":"↓ ")+fmtD(Math.abs(coDiff))+" vs meta · "+teamR.length+" vendedores</div><span class=\"sbadge "+coSc+" kpi-hero-badge\">"+(coSc==="green"?"SOBRE META":coSc==="yellow"?"EN CAMINO":"ALERTA")+"</span></div>"+
-    (falta>0
-      ?"<div class=\"kpi-hero accent-or\"><div class=\"kpi-hero-bg\">!</div><span class=\"kpi-hero-ico\">🔥</span><div class=\"kpi-hero-lbl\">Faltante para Meta</div><div class=\"kpi-hero-val\" style=\"color:var(--or)\">"+fmtD(falta)+"</div><div class=\"kpi-hero-sub\">"+STATE.diasLaborables+" días laborables · "+fmtD(Math.ceil(falta/Math.max(STATE.diasLaborables,1)))+"/día</div><div class=\"kpi-hero-badge\" style=\"background:var(--sy-bg);color:#B87020\">ACCIÓN REQUERIDA</div></div>"
-      :(top?"<div class=\"kpi-hero accent-gl\"><div class=\"kpi-hero-bg\">✓</div><span class=\"kpi-hero-ico\">🏆</span><div class=\"kpi-hero-lbl\">Top Performer</div><div class=\"kpi-hero-val\" style=\"color:var(--gd)\">"+esc(top.name||"—")+"</div><div class=\"kpi-hero-sub\">"+fmtD(top.sales)+" · "+fmtPct(pct(top))+" de meta</div><div class=\"kpi-hero-badge\" style=\"background:var(--sg-bg);color:var(--sg)\">META ALCANZADA ✓</div></div>":"")
-    )+"</div>";
-
-  var smKpi=
-    "<div class=\"kpi-row-sm\">"+
-    "<div class=\"kpi-sm\"><div class=\"kpi-sm-lbl\">Ganancia Bruta Equipo</div><div class=\"kpi-sm-val txt-gd\">"+fmtD(tGPT)+"</div><div class=\"kpi-sm-sub\">GP total del período</div></div>"+
-    "<div class=\"kpi-sm\"><div class=\"kpi-sm-lbl\">% Margen Compañía</div><div class=\"kpi-sm-val\">"+fmtPct(coMg)+"</div><div class=\"kpi-sm-sub\">GP / Ventas Netas</div></div>"+
-    "<div class=\"kpi-sm\"><div class=\"kpi-sm-lbl\">Total Facturas</div><div class=\"kpi-sm-val\">"+dispInvs+"</div><div class=\"kpi-sm-sub\">"+(dispInvs>0?fmtD(Math.round(dispSales/dispInvs))+" prom.":"—")+"</div></div>"+
-    "<div class=\"kpi-sm\"><div class=\"kpi-sm-lbl\">Stretch Compañía</div><div class=\"kpi-sm-val txt-or\">"+fmtPct(tStrT>0?dispSales/tStrT*100:0)+"</div><div class=\"kpi-sm-sub\">"+fmtD(tStrT)+" objetivo</div></div>"+
-    "</div>";
-
-  var dailyStrip=
-    "<div class=\"daily-kpi-strip\">"+
-    "<div class=\"daily-kpi-item dki-a\">"+
-      "<span class=\"dki-ico\">📈</span>"+
-      "<div class=\"dki-lbl\">Ritmo Diario Compañía</div>"+
-      "<div class=\"dki-val\" style=\"color:var(--gd)\">"+(coVdA>0?fmtD(Math.round(coVdA)):"—")+"</div>"+
-      "<div class=\"dki-sub\">"+(STATE.diaActual>0?"día "+STATE.diaActual+" del mes":"Configura día actual en Admin")+"</div>"+
-    "</div>"+
-    "<div class=\"daily-kpi-item dki-r\">"+
-      "<span class=\"dki-ico\">🎯</span>"+
-      "<div class=\"dki-lbl\">Meta Diaria Requerida</div>"+
-      "<div class=\"dki-val\" style=\"color:var(--or)\">"+(coVdR>0?fmtD(Math.round(coVdR)):(falta<=0?"✓ META":"—"))+"</div>"+
-      "<div class=\"dki-sub\">"+STATE.diasLaborables+" días laborables restantes</div>"+
-    "</div>"+
-    "<div class=\"daily-kpi-item dki-s\">"+
-      "<span class=\"dki-ico\">"+coVdSt.ico+"</span>"+
-      "<div class=\"dki-lbl\">Estado del Ritmo</div>"+
-      "<div class=\"dki-val\" style=\"font-size:13px;padding-top:5px\"><span class=\"vd-pill "+coVdSt.cls+"\">"+coVdSt.lbl+"</span></div>"+
-      "<div class=\"dki-sub\">"+(coVdA>0&&coVdR>0?fmtD(Math.round(coVdA))+" vs "+fmtD(Math.round(coVdR))+" req.":"")+"</div>"+
-    "</div>"+
-    "<div class=\"daily-kpi-item dki-d\">"+
-      "<span class=\"dki-ico\">"+(coVdDiff>=0?"⬆️":"⬇️")+"</span>"+
-      "<div class=\"dki-lbl\">Diferencia Diaria</div>"+
-      "<div class=\"dki-val\" style=\"color:"+(coVdDiff>=0?"var(--sg)":"var(--sr)")+"\">"+(coVdR>0?(coVdDiff>=0?"+":"")+fmtD(Math.round(coVdDiff)):"—")+"</div>"+
-      "<div class=\"dki-sub\">"+(coVdDiff>=0?"por encima del ritmo":"necesita acelerar")+"</div>"+
-    "</div>"+
-    "</div>";
-
+  var metaWarning=!hasMeta?"<div class=\"meta-warning\">⚠️ La Meta General de Ventas Compañía no está configurada. Ve a <strong>Admin → Período Activo</strong> para ingresarla.</div>":"";
+  var heroKpi="<div class=\"kpi-hero-row\">"+
+    "<div class=\"kpi-hero accent-gd\"><div class=\"kpi-hero-bg\">$</div><span class=\"kpi-hero-ico\">💰</span><div class=\"kpi-hero-lbl\">Total Ventas Compañía</div><div class=\"kpi-hero-val\">"+fmtD(totSalesAll)+"</div><div class=\"kpi-hero-sub\">Equipo: "+fmtD(tSalesT)+(tSalesI>0?" · Apoyo: "+fmtD(tSalesI):"")+(tSalesH>0?" · Casa: "+fmtD(tSalesH):"")+(tSalesW>0?" · Web: "+fmtD(tSalesW):"")+"</div><div class=\"kpi-hero-badge\" style=\"background:rgba(42,87,71,.1);color:var(--gd)\">"+esc(STATE.mes)+" "+STATE.anio+"</div></div>"+
+    (hasMeta?"<div class=\"kpi-hero accent-gl\"><div class=\"kpi-hero-bg\">%</div><span class=\"kpi-hero-ico\">🎯</span><div class=\"kpi-hero-lbl\">Meta General Compañía</div><div class=\"kpi-hero-val\" style=\"color:"+coC+"\">"+fmtPct(coP)+"</div><div class=\"kpi-hero-sub\">Meta: "+fmtD(dispMeta)+" &nbsp;·&nbsp; Diferencia: "+(coDiff>=0?"↑ +":"↓ ")+fmtD(Math.abs(coDiff))+"</div><span class=\"sbadge "+coSc+" kpi-hero-badge\">"+(coSc==="green"?"SOBRE META":coSc==="yellow"?"EN CAMINO":"ALERTA")+"</span></div>":"<div class=\"kpi-hero accent-or\" style=\"opacity:.6\"><div class=\"kpi-hero-bg\">?</div><span class=\"kpi-hero-ico\">🎯</span><div class=\"kpi-hero-lbl\">Meta General Compañía</div><div class=\"kpi-hero-val\" style=\"font-size:20px;color:var(--muted)\">No configurada</div><div class=\"kpi-hero-sub\">Ingrésala en Admin → Período Activo</div><div class=\"kpi-hero-badge\" style=\"background:var(--sy-bg);color:#B87020\">CONFIGURA EN ADMIN</div></div>")+
+    (falta>0?"<div class=\"kpi-hero accent-or\"><div class=\"kpi-hero-bg\">!</div><span class=\"kpi-hero-ico\">🔥</span><div class=\"kpi-hero-lbl\">Faltante para Meta</div><div class=\"kpi-hero-val\" style=\"color:var(--or)\">"+fmtD(falta)+"</div><div class=\"kpi-hero-sub\">"+STATE.diasLaborables+" días lab. · "+fmtD(Math.ceil(falta/Math.max(STATE.diasLaborables,1)))+"/día req.</div><div class=\"kpi-hero-badge\" style=\"background:var(--sy-bg);color:#B87020\">ACCIÓN REQUERIDA</div></div>":(top?"<div class=\"kpi-hero accent-gl\"><div class=\"kpi-hero-bg\">✓</div><span class=\"kpi-hero-ico\">🏆</span><div class=\"kpi-hero-lbl\">Top Performer del Equipo</div><div class=\"kpi-hero-val\" style=\"color:var(--gd)\">"+esc(top.name||"—")+"</div><div class=\"kpi-hero-sub\">"+fmtD(top.sales)+" · "+fmtPct(pct(top))+" de su meta</div><div class=\"kpi-hero-badge\" style=\"background:var(--sg-bg);color:var(--sg)\">MEJOR DEL MES</div></div>":""))+
+  "</div>";
+  var smKpi="<div class=\"kpi-row-sm\">"+
+    "<div class=\"kpi-sm\"><div class=\"kpi-sm-lbl\">Ganancia Bruta Equipo</div><div class=\"kpi-sm-val txt-gd\">"+fmtD(tGPT)+"</div><div class=\"kpi-sm-sub\">Solo vendedores de equipo</div></div>"+
+    "<div class=\"kpi-sm\"><div class=\"kpi-sm-lbl\">% Margen Compañía</div><div class=\"kpi-sm-val\">"+fmtPct(coMg)+"</div><div class=\"kpi-sm-sub\">GP equipo / ventas totales</div></div>"+
+    "<div class=\"kpi-sm\"><div class=\"kpi-sm-lbl\">Total Facturas</div><div class=\"kpi-sm-val\">"+totInvsAll+"</div><div class=\"kpi-sm-sub\">"+(totInvsAll>0?fmtD(Math.round(totSalesAll/totInvsAll))+" promedio":"—")+"</div></div>"+
+    "<div class=\"kpi-sm\"><div class=\"kpi-sm-lbl\">Stretch Equipo</div><div class=\"kpi-sm-val txt-or\">"+fmtPct(tStrT>0?tSalesT/tStrT*100:0)+"</div><div class=\"kpi-sm-sub\">"+fmtD(tStrT)+" objetivo</div></div>"+
+  "</div>";
+  var tot1=totSalesAll||1;
+  var channelStrip="<div class=\"channel-strip\">"+
+    "<div class=\"channel-item channel-team\"><span class=\"channel-ico\">👥</span><div class=\"channel-lbl\">Vendedores de Equipo</div><div class=\"channel-val\">"+fmtD(tSalesT)+"</div><div class=\"channel-pct\">"+fmtPct(tSalesT/tot1*100)+" del total</div></div>"+
+    "<div class=\"channel-item channel-internal\"><span class=\"channel-ico\">🔄</span><div class=\"channel-lbl\">Apoyo Interno / Órdenes</div><div class=\"channel-val\">"+(tSalesI>0?fmtD(tSalesI):"—")+"</div><div class=\"channel-pct\">"+(tSalesI>0?fmtPct(tSalesI/tot1*100)+" del total":"sin datos")+"</div></div>"+
+    "<div class=\"channel-item channel-house\"><span class=\"channel-ico\">🏠</span><div class=\"channel-lbl\">Ventas de la Casa</div><div class=\"channel-val\">"+(tSalesH>0?fmtD(tSalesH):"—")+"</div><div class=\"channel-pct\">"+(tSalesH>0?fmtPct(tSalesH/tot1*100)+" del total":"sin datos")+"</div></div>"+
+    "<div class=\"channel-item channel-web\"><span class=\"channel-ico\">🌐</span><div class=\"channel-lbl\">Web / E-commerce</div><div class=\"channel-val\">"+(tSalesW>0?fmtD(tSalesW):"—")+"</div><div class=\"channel-pct\">"+(tSalesW>0?fmtPct(tSalesW/tot1*100)+" del total":"sin datos")+"</div></div>"+
+  "</div>";
+  var dailyStrip="<div class=\"daily-kpi-strip\">"+
+    "<div class=\"daily-kpi-item dki-a\"><span class=\"dki-ico\">📈</span><div class=\"dki-lbl\">Ritmo Diario Compañía</div><div class=\"dki-val\" style=\"color:var(--gd)\">"+(coVdA>0?fmtD(Math.round(coVdA)):"—")+"</div><div class=\"dki-sub\">"+(STATE.diaActual>0?"día "+STATE.diaActual+" del mes":"Configura día actual en Admin")+"</div></div>"+
+    "<div class=\"daily-kpi-item dki-r\"><span class=\"dki-ico\">🎯</span><div class=\"dki-lbl\">Meta Diaria Requerida</div><div class=\"dki-val\" style=\"color:var(--or)\">"+(coVdR>0?fmtD(Math.round(coVdR)):(hasMeta&&falta<=0?"✓ META":"—"))+"</div><div class=\"dki-sub\">"+STATE.diasLaborables+" días laborables restantes</div></div>"+
+    "<div class=\"daily-kpi-item dki-s\"><span class=\"dki-ico\">"+coVdSt.ico+"</span><div class=\"dki-lbl\">Estado del Ritmo</div><div class=\"dki-val\" style=\"font-size:13px;padding-top:5px\"><span class=\"vd-pill "+coVdSt.cls+"\">"+coVdSt.lbl+"</span></div><div class=\"dki-sub\">"+(coVdA>0&&coVdR>0?fmtD(Math.round(coVdA))+" vs "+fmtD(Math.round(coVdR))+" req.":"")+"</div></div>"+
+    "<div class=\"daily-kpi-item dki-d\"><span class=\"dki-ico\">"+(coVdDiff>=0?"⬆️":"⬇️")+"</span><div class=\"dki-lbl\">Diferencia Diaria</div><div class=\"dki-val\" style=\"color:"+(coVdDiff>=0?"var(--sg)":"var(--sr)")+"\">"+(coVdR>0?(coVdDiff>=0?"+":"")+fmtD(Math.round(coVdDiff)):"—")+"</div><div class=\"dki-sub\">"+(coVdDiff>=0?"por encima del ritmo":"necesita acelerar")+"</div></div>"+
+  "</div>";
   var medals2=["🥇","🥈","🥉"],podColors=["#EE9D2E","#2A5747","#8BA898"];
   var podHtml="<div class=\"podium-row\">";
-  teamR.slice(0,3).forEach(function(r,i){
-    var p4=pct(r),sc4=status(r),dv4=diff(r);
-    podHtml+="<div class=\"podium-card p"+(i+1)+"\">"+
-      "<span class=\"podium-medal\">"+medals2[i]+"</span>"+
-      "<div class=\"podium-avatar\" style=\"background:"+podColors[i]+"\">"+esc((r.name||"?").charAt(0))+"</div>"+
-      "<div class=\"podium-name\">"+esc(r.name||"Sin nombre")+"</div>"+
-      "<div class=\"mono\" style=\"font-size:10px;color:var(--muted);margin-bottom:8px\">"+esc(r.code||"—")+"</div>"+
-      "<div class=\"podium-sales\">"+fmtD(r.sales)+"</div>"+
-      "<div class=\"podium-pct\" style=\"color:"+scColor(sc4)+"\">"+fmtPct(p4)+" de meta</div>"+
-      "<div style=\"font-size:11px;color:var(--muted);margin-bottom:6px\">"+(dv4>=0?"+":"")+fmtD(dv4)+" vs meta</div>"+
-      "<span class=\"sbadge "+sc4+"\">"+statusLabel(r)+"</span>"+
-      "</div>";
-  });
+  teamR.slice(0,3).forEach(function(r,i){var p4=pct(r),sc4=status(r),dv4=diff(r);podHtml+="<div class=\"podium-card p"+(i+1)+"\"><span class=\"podium-medal\">"+medals2[i]+"</span><div class=\"podium-avatar\" style=\"background:"+podColors[i]+"\">"+esc((r.name||"?").charAt(0))+"</div><div class=\"podium-name\">"+esc(r.name||"Sin nombre")+"</div><div class=\"mono\" style=\"font-size:10px;color:var(--muted);margin-bottom:8px\">"+esc(r.code||"—")+"</div><div class=\"podium-sales\">"+fmtD(r.sales)+"</div><div class=\"podium-pct\" style=\"color:"+scColor(sc4)+"\">"+fmtPct(p4)+" de meta</div><div style=\"font-size:11px;color:var(--muted);margin-bottom:6px\">"+(dv4>=0?"+":"")+fmtD(dv4)+" vs meta</div><span class=\"sbadge "+sc4+"\">"+statusLabel(r)+"</span></div>";});
   podHtml+="</div>";
-
-  var coTbl=
-    "<div class=\"co-table-card\"><div class=\"co-table-hd\"><h3>Desglose del Equipo de Ventas</h3><span style=\"font-size:11px;color:var(--muted)\">"+esc(STATE.mes)+" "+STATE.anio+"</span></div>"+
-    "<div style=\"overflow-x:auto\"><table class=\"rtbl\"><thead><tr>"+
-    "<th>#</th><th>Vendedor</th><th class=\"r\">Ventas Netas</th><th class=\"r\">Meta</th><th class=\"r\">% Cumpl.</th>"+
-    "<th class=\"r\">Gan. Bruta</th><th class=\"r\">% Margen</th><th class=\"r\">Facturas</th><th class=\"r\">Δ Meta</th><th>Estado</th></tr></thead><tbody>";
-  teamR.forEach(function(r,i){
-    var p5=pct(r),sc5=status(r),pc5=scColor(sc5),dv5=diff(r);
-    coTbl+="<tr>"+
-      "<td class=\"td-rank "+(i===0?"r1":i===1?"r2":i===2?"r3":"")+"\">"+(i<3?medals2[i]:(i+1))+"</td>"+
-      "<td class=\"td-name\">"+esc(r.name||"Sin nombre")+"<span class=\"td-code\">"+esc(r.code||"—")+"</span></td>"+
-      "<td class=\"td-num r fw8\">"+fmtD(r.sales)+"</td>"+
-      "<td class=\"td-num r\" style=\"color:var(--muted)\">"+fmtD(r.meta)+"</td>"+
-      "<td class=\"td-pct r\" style=\"color:"+pc5+"\">"+fmtPct(p5)+"<div class=\"mini-bar-wrap\"><div class=\"mini-bar\" style=\"width:"+Math.min(p5,100).toFixed(0)+"%;background:"+pc5+"\"></div></div></td>"+
-      "<td class=\"td-num r mono txt-gd\">"+fmtD(r.gp)+"</td>"+
-      "<td class=\"td-num r\">"+(r.sales>0?fmtPct(r.gp/r.sales*100):"—")+"</td>"+
-      "<td class=\"td-num r\">"+(r.invs||0)+"</td>"+
-      "<td class=\"r\" style=\"color:"+(dv5>=0?"#8DBA38":"#E53935")+";font-weight:700;font-size:12px\">"+(dv5>=0?"+":"")+fmtD(dv5)+"</td>"+
-      "<td><span class=\"sbadge "+sc5+"\">"+statusLabel(r)+"</span></td>"+
-      "</tr>";
-  });
-  coTbl+="<tr style=\"background:rgba(42,87,71,.05);border-top:2px solid var(--bdr2)\">"+
-    "<td colspan=\"2\" class=\"fw8 txt-gd\">TOTAL EQUIPO</td>"+
-    "<td class=\"r fw9\">"+fmtD(tSalesT)+"</td><td class=\"r\" style=\"color:var(--muted)\">"+fmtD(tMetaT)+"</td>"+
-    "<td class=\"r fw9\" style=\"color:"+coC+"\">"+fmtPct(tMetaT>0?tSalesT/tMetaT*100:0)+"</td>"+
-    "<td class=\"r fw8 mono txt-gd\">"+fmtD(tGPT)+"</td><td class=\"r fw8\">"+fmtPct(tSalesT>0?tGPT/tSalesT*100:0)+"</td>"+
-    "<td class=\"r fw8\">"+tInvsT+"</td>"+
-    "<td class=\"r fw8\" style=\"color:"+(coDiff>=0?"#8DBA38":"#E53935")+"\">"+(coDiff>=0?"+":"")+fmtD(tSalesT-tMetaT)+"</td>"+
-    "<td></td></tr></tbody></table></div></div>";
-
+  var coTbl="<div class=\"co-table-card\"><div class=\"co-table-hd\"><h3>Desglose del Equipo de Ventas</h3><span style=\"font-size:11px;color:var(--muted)\">"+esc(STATE.mes)+" "+STATE.anio+"</span></div><div style=\"overflow-x:auto\"><table class=\"rtbl\"><thead><tr><th>#</th><th>Vendedor</th><th class=\"r\">Ventas Netas</th><th class=\"r\">Meta</th><th class=\"r\">% Cumpl.</th><th class=\"r\">Gan. Bruta</th><th class=\"r\">% Margen</th><th class=\"r\">Facturas</th><th class=\"r\">Δ Meta</th><th>Estado</th></tr></thead><tbody>";
+  teamR.forEach(function(r,i){var p5=pct(r),sc5=status(r),pc5=scColor(sc5),dv5=diff(r);coTbl+="<tr><td class=\"td-rank "+(i===0?"r1":i===1?"r2":i===2?"r3":"")+"\">"+(i<3?medals2[i]:(i+1))+"</td><td class=\"td-name\">"+esc(r.name||"Sin nombre")+"<span class=\"td-code\">"+esc(r.code||"—")+"</span></td><td class=\"td-num r fw8\">"+fmtD(r.sales)+"</td><td class=\"td-num r\" style=\"color:var(--muted)\">"+fmtD(r.meta)+"</td><td class=\"td-pct r\" style=\"color:"+pc5+"\">"+fmtPct(p5)+"<div class=\"mini-bar-wrap\"><div class=\"mini-bar\" style=\"width:"+Math.min(p5,100).toFixed(0)+"%;background:"+pc5+"\"></div></div></td><td class=\"td-num r mono txt-gd\">"+fmtD(r.gp)+"</td><td class=\"td-num r\">"+(r.sales>0?fmtPct(r.gp/r.sales*100):"—")+"</td><td class=\"td-num r\">"+(r.invs||0)+"</td><td class=\"r\" style=\"color:"+(dv5>=0?"#8DBA38":"#E53935")+";font-weight:700;font-size:12px\">"+(dv5>=0?"+":"")+fmtD(dv5)+"</td><td><span class=\"sbadge "+sc5+"\">"+statusLabel(r)+"</span></td></tr>";});
+  coTbl+="<tr style=\"background:rgba(42,87,71,.05);border-top:2px solid var(--bdr2)\"><td colspan=\"2\" class=\"fw8 txt-gd\">TOTAL EQUIPO</td><td class=\"r fw9\">"+fmtD(tSalesT)+"</td><td class=\"r\" style=\"color:var(--muted)\">"+fmtD(tMetaT)+"</td><td class=\"r fw9\" style=\"color:var(--muted)\">"+fmtPct(tMetaT>0?tSalesT/tMetaT*100:0)+"</td><td class=\"r fw8 mono txt-gd\">"+fmtD(tGPT)+"</td><td class=\"r fw8\">"+fmtPct(tSalesT>0?tGPT/tSalesT*100:0)+"</td><td class=\"r fw8\">"+tInvsT+"</td><td class=\"r fw8\" style=\"color:"+(tSalesT>=tMetaT?"#8DBA38":"#E53935")+"\">"+(tSalesT>=tMetaT?"+":"")+fmtD(tSalesT-tMetaT)+"</td><td></td></tr></tbody></table></div></div>";
+  var internalHtml="";
+  if(internalR.length){var iRows=internalR.map(function(r){var vdI=vdActual(r);return "<tr><td class=\"td-name\">"+esc(r.name||"Sin nombre")+"<span class=\"td-code\">"+esc(r.code||"—")+"</span></td><td class=\"td-num r\">"+(r.invs||0)+"</td><td class=\"td-num r fw8\">"+fmtD(r.sales)+"</td><td style=\"color:#6366f1;font-size:12px;font-weight:700;text-align:right\">"+(vdI>0?fmtD(Math.round(vdI))+"/día":"—")+"</td></tr>";}).join("");internalHtml="<div class=\"internal-section\"><div class=\"sub-section-title\">🔄 Apoyo Interno / Órdenes <span class=\"sub-section-badge internal-badge\">"+internalR.length+" código"+(internalR.length>1?"s":"")+"</span></div><div class=\"co-table-card\" style=\"margin-bottom:0;border:1px solid rgba(99,110,250,.2)\"><div style=\"overflow-x:auto\"><table class=\"rtbl\"><thead><tr><th>Código / Cuenta</th><th class=\"r\">Facturas</th><th class=\"r\">Ventas Netas</th><th class=\"r\">Venta Diaria</th></tr></thead><tbody>"+iRows+"<tr style=\"border-top:2px solid var(--bdr2)\"><td class=\"fw8\" style=\"color:#3d52d5\">TOTAL APOYO</td><td class=\"r fw8\">"+tInvsI+"</td><td class=\"r fw9\">"+fmtD(tSalesI)+"</td><td></td></tr></tbody></table></div></div></div>";}
   var houseHtml="";
-  if(houseR.length){
-    var vdTH=STATE.diaActual>0?tSalesH/STATE.diaActual:0;
-    var vdHR=tMetaH>0&&STATE.diasLaborables>0?Math.max(tMetaH-tSalesH,0)/STATE.diasLaborables:0;
-    var houseRows="";
-    houseR.forEach(function(r){
-      var vdH=vdActual(r);
-      houseRows+="<tr>"+
-        "<td class=\"td-name\">"+esc(r.name||"Sin nombre")+"<span class=\"td-code\">"+esc(r.code||"—")+"</span></td>"+
-        "<td class=\"td-num r\">"+(r.invs||0)+"</td>"+
-        "<td class=\"td-num r fw8\">"+fmtD(r.sales)+"</td>"+
-        "<td class=\"td-num r\" style=\"color:var(--or)\">"+(vdH>0?fmtD(Math.round(vdH))+"/día":"—")+"</td>"+
-        "</tr>";
-    });
-    houseHtml="<div class=\"house-section\">"+
-      "<div class=\"house-header\">"+
-        "<div class=\"house-title\">🏠 Ventas de la Casa <div class=\"house-badge\">"+houseR.length+" cuenta"+(houseR.length>1?"s":"")+"</div></div>"+
-        (housePct>0?"<div style=\"font-size:12px;color:var(--sub);font-weight:600\">"+fmtPct(housePct)+" del total empresa</div>":"")+"</div>"+
-      "<div class=\"house-kpis\">"+
-        "<div class=\"house-kpi\"><div class=\"house-kpi-lbl\">Ventas Netas</div><div class=\"house-kpi-val\">"+fmtD(tSalesH)+"</div><div class=\"house-kpi-sub\">"+esc(STATE.mes)+" "+STATE.anio+"</div></div>"+
-        "<div class=\"house-kpi\"><div class=\"house-kpi-lbl\">Total Facturas</div><div class=\"house-kpi-val\">"+tInvsH+"</div><div class=\"house-kpi-sub\">"+(tInvsH>0&&tSalesH>0?fmtD(Math.round(tSalesH/tInvsH))+" prom.":"—")+"</div></div>"+
-        "<div class=\"house-kpi\"><div class=\"house-kpi-lbl\">📈 Ritmo Diario</div><div class=\"house-kpi-val\" style=\"color:var(--gd)\">"+(vdTH>0?fmtD(Math.round(vdTH)):"—")+"</div><div class=\"house-kpi-sub\">"+(STATE.diaActual>0?"día "+STATE.diaActual+" del mes":"configura día actual")+"</div></div>"+
-        "<div class=\"house-kpi\"><div class=\"house-kpi-lbl\">🎯 Meta Diaria Req.</div><div class=\"house-kpi-val\" style=\"color:var(--or)\">"+(vdHR>0?fmtD(Math.round(vdHR)):"—")+"</div><div class=\"house-kpi-sub\">"+(tMetaH>0?fmtD(tMetaH)+" meta total":"Sin meta configurada")+"</div></div>"+
-      "</div>"+
-      "<div class=\"co-table-card\" style=\"margin-bottom:0;border:1px solid rgba(238,157,46,.2)\">"+
-        "<div class=\"co-table-hd\"><h3 style=\"font-size:13px\">Componentes de Ventas de la Casa</h3></div>"+
-        "<div style=\"overflow-x:auto\"><table class=\"rtbl\"><thead><tr><th>Cuenta</th><th class=\"r\">Facturas</th><th class=\"r\">Ventas Netas</th><th class=\"r\">Venta Diaria</th></tr></thead><tbody>"+houseRows+"</tbody></table></div>"+
-      "</div>"+
-      "</div>";
-  }
-
+  if(houseR.length){var vdTH=STATE.diaActual>0?tSalesH/STATE.diaActual:0;var vdHR=tMetaH>0&&STATE.diasLaborables>0?Math.max(tMetaH-tSalesH,0)/STATE.diasLaborables:0;var housePct=totSalesAll>0?tSalesH/totSalesAll*100:0;var hRows=houseR.map(function(r){var vdH=vdActual(r);return "<tr><td class=\"td-name\">"+esc(r.name||"Sin nombre")+"<span class=\"td-code\">"+esc(r.code||"—")+"</span></td><td class=\"td-num r\">"+(r.invs||0)+"</td><td class=\"td-num r fw8\">"+fmtD(r.sales)+"</td><td style=\"color:var(--or);font-size:12px;font-weight:700;text-align:right\">"+(vdH>0?fmtD(Math.round(vdH))+"/día":"—")+"</td></tr>";}).join("");houseHtml="<div class=\"house-section\"><div class=\"house-header\"><div class=\"house-title\">🏠 Ventas de la Casa <div class=\"house-badge\">"+houseR.length+" cuenta"+(houseR.length>1?"s":"")+"</div></div>"+(housePct>0?"<div style=\"font-size:12px;color:var(--sub);font-weight:600\">"+fmtPct(housePct)+" del total empresa</div>":"")+"</div><div class=\"house-kpis\"><div class=\"house-kpi\"><div class=\"house-kpi-lbl\">Ventas Netas</div><div class=\"house-kpi-val\">"+fmtD(tSalesH)+"</div><div class=\"house-kpi-sub\">"+esc(STATE.mes)+" "+STATE.anio+"</div></div><div class=\"house-kpi\"><div class=\"house-kpi-lbl\">Total Facturas</div><div class=\"house-kpi-val\">"+tInvsH+"</div><div class=\"house-kpi-sub\">"+(tInvsH>0&&tSalesH>0?fmtD(Math.round(tSalesH/tInvsH))+" prom.":"—")+"</div></div><div class=\"house-kpi\"><div class=\"house-kpi-lbl\">📈 Ritmo Diario</div><div class=\"house-kpi-val\" style=\"color:var(--gd)\">"+(vdTH>0?fmtD(Math.round(vdTH)):"—")+"</div><div class=\"house-kpi-sub\">"+(STATE.diaActual>0?"día "+STATE.diaActual+" del mes":"configura día actual")+"</div></div><div class=\"house-kpi\"><div class=\"house-kpi-lbl\">🎯 Meta Diaria Req.</div><div class=\"house-kpi-val\" style=\"color:var(--or)\">"+(vdHR>0?fmtD(Math.round(vdHR)):"—")+"</div><div class=\"house-kpi-sub\">"+(tMetaH>0?fmtD(tMetaH)+" meta total":"Sin meta configurada")+"</div></div></div><div class=\"co-table-card\" style=\"margin-bottom:0;border:1px solid rgba(238,157,46,.2)\"><div style=\"overflow-x:auto\"><table class=\"rtbl\"><thead><tr><th>Cuenta</th><th class=\"r\">Facturas</th><th class=\"r\">Ventas Netas</th><th class=\"r\">Venta Diaria</th></tr></thead><tbody>"+hRows+"</tbody></table></div></div></div>";}
+  var webHtml="";
+  if(webR.length){var webPct=totSalesAll>0?tSalesW/totSalesAll*100:0;var wRows=webR.map(function(r){var vdW=vdActual(r);return "<tr><td class=\"td-name\">"+esc(r.name||"Sin nombre")+"<span class=\"td-code\">"+esc(r.code||"—")+"</span></td><td class=\"td-num r\">"+(r.invs||0)+"</td><td class=\"td-num r fw8\">"+fmtD(r.sales)+"</td><td style=\"color:#0d9488;font-size:12px;font-weight:700;text-align:right\">"+(vdW>0?fmtD(Math.round(vdW))+"/día":"—")+"</td></tr>";}).join("");webHtml="<div class=\"web-section\"><div class=\"sub-section-title\">🌐 Web / E-commerce <span class=\"sub-section-badge web-badge\">"+webR.length+" canal"+(webR.length>1?"es":"")+"</span>"+(webPct>0?"<span style=\"font-size:11px;color:var(--sub);font-weight:600;margin-left:8px\">"+fmtPct(webPct)+" del total</span>":"")+"</div><div class=\"co-table-card\" style=\"margin-bottom:0;border:1px solid rgba(20,184,166,.2)\"><div style=\"overflow-x:auto\"><table class=\"rtbl\"><thead><tr><th>Canal / Fuente</th><th class=\"r\">Facturas</th><th class=\"r\">Ventas Netas</th><th class=\"r\">Venta Diaria</th></tr></thead><tbody>"+wRows+"<tr style=\"border-top:2px solid var(--bdr2)\"><td class=\"fw8\" style=\"color:#0d9488\">TOTAL WEB</td><td class=\"r fw8\">"+tInvsW+"</td><td class=\"r fw9\">"+fmtD(tSalesW)+"</td><td></td></tr></tbody></table></div></div></div>";}
   el.innerHTML=
+    metaWarning+
     "<div class=\"slbl\"><span>📊 KPIs Ejecutivos · "+esc(STATE.mes)+" "+STATE.anio+"</span></div>"+heroKpi+smKpi+
+    "<div class=\"slbl\"><span>📡 Canales de Venta</span></div>"+channelStrip+
     "<div class=\"slbl\"><span>🎯 Ritmo Diario vs Meta Requerida</span></div>"+dailyStrip+
-    "<div class=\"slbl\"><span>🏆 Top Performers</span></div>"+podHtml+
-    "<div class=\"slbl\"><span>📋 Desglose del Equipo</span></div>"+coTbl+
-    (houseR.length?"<div class=\"slbl\"><span>🏠 Ventas de la Casa</span></div>"+houseHtml:"");
+    "<div class=\"slbl\"><span>🏆 Equipo de Ventas</span></div>"+podHtml+coTbl+
+    (internalR.length?"<div class=\"slbl\"><span>🔄 Apoyo Interno / Órdenes</span></div>"+internalHtml:"")+
+    (houseR.length?"<div class=\"slbl\"><span>🏠 Ventas de la Casa</span></div>"+houseHtml:"")+
+    (webR.length?"<div class=\"slbl\"><span>🌐 Web / E-commerce</span></div>"+webHtml:"");
 }
 
 // ══ TAB 3 — HALL OF FAME ════════════════════════════════
@@ -1124,7 +1069,7 @@ function renderRepTable(){
     return "<tr>"+
       "<td><input class=\"a-in txt nm\" type=\"text\" value=\""+esc(r.name)+"\" data-rid=\""+r.id+"\" data-field=\"name\" oninput=\"handleRepField(this)\" placeholder=\"Nombre...\"></td>"+
       "<td><input class=\"a-in txt cd\" type=\"text\" value=\""+esc(r.code)+"\" data-rid=\""+r.id+"\" data-field=\"code\" oninput=\"handleRepField(this)\" placeholder=\"Código\"></td>"+
-      "<td><select class=\"a-sel cat-"+cat+"\" data-rid=\""+r.id+"\" data-field=\"category\" onchange=\"handleRepField(this);this.className='a-sel cat-'+this.value\"><option value=\"team\""+(cat==="team"?" selected":"")+">Vendedor de Equipo</option><option value=\"house\""+(cat==="house"?" selected":"")+">Venta de la Casa</option></select></td>"+
+      "<td><select class=\"a-sel cat-"+cat+"\" data-rid=\""+r.id+"\" data-field=\"category\" onchange=\"handleRepField(this);this.className='a-sel cat-'+this.value\"><option value=\"team\""+(cat==="team"?" selected":"")+">Vendedor de Equipo</option><option value=\"internal\""+(cat==="internal"?" selected":"")+">Apoyo Interno / Órdenes</option><option value=\"house\""+(cat==="house"?" selected":"")+">Venta de la Casa</option><option value=\"web\""+(cat==="web"?" selected":"")+">Web / E-commerce</option><option value=\"inactive\""+(cat==="inactive"?" selected":"")+">Inactivo</option></select></td>"+
       "<td class=\"r\"><input class=\"a-in num nu\" type=\"number\" value=\""+(r.meta||"")+"\" data-rid=\""+r.id+"\" data-field=\"meta\" oninput=\"handleRepField(this)\" placeholder=\"0\"></td>"+
       "<td class=\"r\"><input class=\"a-in num nu\" type=\"number\" value=\""+(r.stretch||"")+"\" data-rid=\""+r.id+"\" data-field=\"stretch\" oninput=\"handleRepField(this)\" placeholder=\"0\"></td>"+
       "<td class=\"r\"><input class=\"a-in num sm\" type=\"number\" value=\""+(r.invs||"")+"\" data-rid=\""+r.id+"\" data-field=\"invs\" oninput=\"handleRepField(this)\" placeholder=\"0\"></td>"+
