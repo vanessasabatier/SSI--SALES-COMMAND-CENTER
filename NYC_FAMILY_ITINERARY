@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC · Family Trip · June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1a1814;--cream:#f5f0e8;--gold:#b8912a;--gold-light:#d4a843;--rust:#8b3a2f;--sage:#4a5c4e;--stone:#9c9488;--white:#fdfbf7;--day1:#8b3a2f;--day2:#4a5c4e;--day3:#2c4a6e;--day4:#6b3d6b;--day5:#8b6914; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7;}
+  .hero{background:var(--ink);color:var(--cream);min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px 50px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 80%,rgba(184,145,42,.15) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 80% 20%,rgba(139,58,47,.12) 0%,transparent 60%);}
+  .hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px;position:relative;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,8vw,72px);font-weight:400;line-height:1.1;margin-bottom:20px;position:relative;}
+  .hero h1 em{font-style:italic;color:var(--gold-light);}
+  .hero-sub{font-size:14px;color:rgba(245,240,232,.65);letter-spacing:1px;position:relative;}
+  .hero-divider{width:40px;height:1px;background:var(--gold);margin:22px auto;position:relative;}
+  .hero-tags{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px;position:relative;}
+  .hero-tag{border:1px solid rgba(184,145,42,.4);color:rgba(245,240,232,.7);padding:5px 14px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;}
+  .tabs-wrapper{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:1px solid rgba(184,145,42,.25);}
+  .tabs{display:flex;overflow-x:auto;scrollbar-width:none;max-width:960px;margin:0 auto;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{flex-shrink:0;padding:14px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,.45);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;background:none;border-left:none;border-right:none;border-top:none;font-family:'DM Sans',sans-serif;font-weight:500;}
+  .tab:hover{color:rgba(245,240,232,.75);}
+  .tab.active{color:var(--gold-light);border-bottom-color:var(--gold);}
+  .section{display:none;max-width:960px;margin:0 auto;padding:48px 20px 80px;}
+  .section.active{display:block;}
+  .section-header{margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid rgba(26,24,20,.12);}
+  .section-header h2{font-family:'Playfair Display',serif;font-size:32px;font-weight:400;margin-bottom:8px;}
+  .section-header p{color:var(--stone);font-size:14px;}
+  .day-block{margin-bottom:52px;}
+  .day-header{display:flex;align-items:center;gap:18px;margin-bottom:24px;}
+  .day-badge{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:white;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;flex-direction:column;line-height:1.2;}
+  .day-badge span{font-size:9px;font-family:'DM Sans',sans-serif;font-weight:400;letter-spacing:1px;text-transform:uppercase;}
+  .day-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;}
+  .day-zone{font-size:12px;color:var(--stone);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;}
+  .timeline{position:relative;padding-left:28px;}
+  .timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:rgba(26,24,20,.1);}
+  .event{position:relative;margin-bottom:22px;padding:18px 20px;background:var(--white);border-left:3px solid #ddd;}
+  .event::before{content:'';position:absolute;left:-34px;top:22px;width:9px;height:9px;border-radius:50%;background:var(--stone);border:2px solid var(--cream);}
+  .event.eat{border-left-color:var(--gold);}
+  .event.eat::before{background:var(--gold);}
+  .event.attraction{border-left-color:var(--sage);}
+  .event.attraction::before{background:var(--sage);}
+  .event.tip{border-left-color:#9c8866;background:#faf7f0;}
+  .event.mussel{border-left-color:#2c6e8a;}
+  .event.mussel::before{background:#2c6e8a;}
+  .event-time{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--stone);margin-bottom:4px;}
+  .event-title{font-size:15px;font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .badge{font-size:9px;padding:2px 8px;letter-spacing:1px;text-transform:uppercase;font-weight:500;border-radius:2px;}
+  .badge-reserve{background:#fce8e4;color:var(--rust);}
+  .badge-kids{background:#e8f0e8;color:var(--sage);}
+  .badge-photo{background:#fdf4e0;color:#8b6914;}
+  .badge-local{background:#e4eef2;color:#2c6e8a;}
+  .badge-iconic{background:#f0e8f4;color:#6b3d6b;}
+  .badge-free{background:#f0ece8;color:#5c5248;}
+  .badge-mussel{background:#e0f0f8;color:#2c6e8a;font-weight:700;}
+  .event-desc{font-size:13.5px;color:#3a3630;line-height:1.6;}
+  .event-cost{font-size:12px;color:var(--stone);margin-top:6px;}
+  .event-cost strong{color:var(--gold);}
+  .event-duration{font-size:11px;color:#b0a898;margin-top:3px;}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:36px;}
+  .info-card{background:var(--white);padding:24px;border-top:3px solid var(--gold);}
+  .info-card h3{font-family:'Playfair Display',serif;font-size:17px;margin-bottom:14px;font-weight:400;}
+  .info-card ul{list-style:none;}
+  .info-card ul li{padding:7px 0;border-bottom:1px solid rgba(26,24,20,.06);font-size:13.5px;display:flex;gap:8px;align-items:flex-start;}
+  .info-card ul li:last-child{border-bottom:none;}
+  .info-card .icon{flex-shrink:0;font-size:14px;margin-top:1px;}
+  .budget-table{width:100%;border-collapse:collapse;margin:20px 0;}
+  .budget-table th{text-align:left;padding:10px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--stone);border-bottom:1px solid rgba(26,24,20,.12);font-weight:400;}
+  .budget-table td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid rgba(26,24,20,.06);}
+  .budget-table .amount{text-align:right;font-weight:500;color:var(--ink);}
+  .budget-table .total td{background:var(--ink);color:var(--cream);}
+  .budget-table .total .amount{color:var(--gold-light);}
+  .top10-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+  .top10-item{background:var(--white);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+  .top10-num{font-family:'Playfair Display',serif;font-size:28px;color:rgba(26,24,20,.1);line-height:1;flex-shrink:0;width:36px;}
+  .top10-content h4{font-size:14px;font-weight:500;margin-bottom:4px;}
+  .top10-content p{font-size:12.5px;color:var(--stone);line-height:1.5;}
+  .checklist{list-style:none;}
+  .checklist li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(26,24,20,.07);font-size:13.5px;align-items:flex-start;}
+  .checklist li:last-child{border-bottom:none;}
+  .checklist .check-icon{width:20px;height:20px;border:1.5px solid var(--gold);border-radius:3px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);}
+  .checklist .urgency{font-size:11px;color:var(--rust);font-weight:500;}
+  .alert{padding:16px 20px;margin:20px 0;border-left:3px solid var(--rust);background:#fef8f7;font-size:13.5px;}
+  .alert strong{color:var(--rust);}
+  .alert-gold{border-left-color:var(--gold);background:#fdf9f0;}
+  .alert-gold strong{color:#8b6914;}
+  .alert-sage{border-left-color:var(--sage);background:#f0f4f0;}
+  .alert-sage strong{color:var(--sage);}
+  .alert-blue{border-left-color:#2c6e8a;background:#f0f6fa;}
+  .alert-blue strong{color:#2c6e8a;}
+  .section-divider{text-align:center;margin:36px 0;position:relative;}
+  .section-divider::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(26,24,20,.1);}
+  .section-divider span{position:relative;background:var(--cream);padding:0 16px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--stone);}
+  .rain-banner{background:var(--day3);color:white;padding:20px 24px;margin-bottom:28px;display:flex;gap:14px;align-items:center;}
+  .rain-icon{font-size:28px;}
+  .rain-banner h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;}
+  .rain-banner p{font-size:13px;opacity:.75;margin-top:2px;}
+  .restaurant-feature{background:var(--ink);color:var(--cream);padding:24px 28px;margin:28px 0;border-left:4px solid #2c6e8a;}
+  .restaurant-feature h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--gold-light);margin-bottom:8px;}
+  .restaurant-feature p{font-size:13.5px;line-height:1.7;opacity:.85;}
+  footer{background:var(--ink);color:rgba(245,240,232,.45);text-align:center;padding:30px 20px;font-size:12px;letter-spacing:1px;}
+  footer em{color:var(--gold-light);font-style:normal;}
+  @media(max-width:600px){.section{padding:32px 16px 60px;}.info-grid{grid-template-columns:1fr;}.top10-grid{grid-template-columns:1fr;}.hero h1{font-size:36px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Luxury Family Concierge · June 2026</div>
+  <h1>New York City<br><em>as a family</em></h1>
+  <div class="hero-divider"></div>
+  <div class="hero-sub">Jun 10–14 · Empire Hotel, Upper West Side · JetBlue B6 904 · SJU → JFK T5 · Arrives 2:01 PM</div>
+  <div class="hero-tags">
+    <span class="hero-tag">2 kids · ages 6 &amp; 7</span>
+    <span class="hero-tag">Full family · 4 people</span>
+    <span class="hero-tag">5 curated days</span>
+    <span class="hero-tag">Local, not tourist</span>
+    <span class="hero-tag">🦪 Mussel night included</span>
+  </div>
+</div>
+
+<div class="tabs-wrapper">
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('itinerary')">Itinerary</button>
+    <button class="tab" onclick="showTab('rain')">☁️ Rain Plan</button>
+    <button class="tab" onclick="showTab('restaurants')">🍽️ Restaurants</button>
+    <button class="tab" onclick="showTab('reservations')">Reservations</button>
+    <button class="tab" onclick="showTab('budget')">Budget</button>
+    <button class="tab" onclick="showTab('top10')">Top 10</button>
+    <button class="tab" onclick="showTab('tips')">Pro Tips</button>
+  </div>
+</div>
+
+<!-- ITINERARY -->
+<div id="itinerary" class="section active">
+  <div class="section-header">
+    <h2>Day by Day Itinerary</h2>
+    <p>Curated to maximize experiences · minimize transit · stay local · include rest</p>
+  </div>
+  <div class="alert alert-gold">
+    <strong>📍 Your base advantage:</strong> Empire Hotel is one block from Central Park and across from Lincoln Center. The American Museum of Natural History is a 7-minute walk. You barely need to move — the neighborhood does the work.
+  </div>
+  <div class="alert alert-blue">
+    <strong>🧭 The philosophy:</strong> You're not here to check boxes. You're here to show your kids what a real city feels like — its rhythm, its food, its scale. Every restaurant in this guide is where New Yorkers actually eat.
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge" style="background:var(--day1);"><span>Day</span>1</div>
+      <div>
+        <div class="day-title">Arrival &amp; The Neighborhood</div>
+        <div class="day-zone">📍 Wednesday Jun 10 · Upper West Side · Central Park</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="event">
+        <div class="event-time">2:01 PM · JFK Terminal 5</div>
+        <div class="event-title">🛬 Land · Baggage · Uber XL to hotel</div>
+        <div class="event-desc">JetBlue T5 baggage claim is fast. Request an Uber XL while waiting for bags — with 4 people and luggage it's worth it. Arrive at the hotel around 3:30–3:45 PM depending on traffic.</div>
+        <div class="event-cost">💰 Uber XL JFK → Hotel: ~$75–95</div>
+      </div>
+      <div class="event">
+        <div class="event-time">3:30 – 4:15 PM</div>
+        <div class="event-title">🏨 Check-in · Unpack · Decompress</div>
+        <div class="event-desc">Don't rush this. Let the kids stretch. Ask the front desk for a high-floor room with a view — and mention you're traveling with young children. Upgrades happen at check-in, not over the phone. Also ask for late checkout on Day 5 while you're at it.</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">4:30 – 6:15 PM</div>
+        <div class="event-title">🌳 Central Park — First walk <span class="badge badge-kids">Kids love it</span> <span class="badge badge-photo">📸 Photo stop</span></div>
+        <div class="event-desc">Enter at Columbus Circle (1 block from the hotel). Today's route is gentle: walk to <strong>Strawberry Fields</strong> (the Lennon memorial mosaic), then down to <strong>Bethesda Fountain</strong> — the most photographed spot in the park, and stunning with late afternoon light. The <strong>Central Park Carousel</strong> is nearby if the kids have energy. June light in the park lasts until 8:30 PM. No schedule, no hurry.</div>
+        <div class="event-duration">⏱️ ~1.5 hrs at your pace</div>
+        <div class="event-cost">💰 Free · Carousel: $4/person</div>
+      </div>
+      <div class="event eat">
+        <div class="event-time">7:00 PM</div>
+        <div class="event-title">🌿 DINNER: Tavern on the Green <span class="badge badge-iconic">Iconic NYC</span> <span class="badge badge-photo">📸 Photo stop</span></div>
+        <div class="event-desc">Walk here directly from the park — the restaurant is literally inside Central Park. The garden terrace with string lights at dusk on a June evening is one of the most beautiful dinner settings in the city. American menu with solid kids options. This is the perfect "first night in New York" dinner — you'll feel it the moment you sit down.</div>
+        <div class="event-cost">💰 ~$110–140 family · Reserve in advance</div>
+      </div>
+      <div class="event tip">
+        <div class="event-title">💡 9 PM — Back to the hotel, everyone sleeps</div>
+        <div class="event-desc">5-minute walk back. Travel day + first afternoon in the city is enough. The kids need rest for Day 2 — the biggest day of the trip for them. Don't add anything else tonight.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge" style="background:var(--day2);"><span>Day</span>2</div>
+      <div>
+        <div class="day-title">The Met + Dinosaurs — Big Museum Day</div>
+        <div class="day-zone">📍 Thursday Jun 11 · Upper East Side · The Met · AMNH · Upper West Side</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="event eat">
+        <div class="event-time">8:30 AM</div>
+        <div class="event-title">☕ BREAKFAST: Zabar's <span class="badge badge-local">UWS institution since 1934</span></div>
+        <div class="event-desc">The most beloved deli on the Upper West Side — and one of the most New York things you can do. Bagels with lox, cream cheese, smoked fish, coffee. Get it and eat standing or take it back to the hotel. This is how the neighborhood eats. On Amsterdam Ave, 8 min from the hotel.</div>
+        <div class="event-cost">💰 ~$35–50 family</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">10:00 AM – 12:30 PM</div>
+        <div class="event-title">🎨 The Metropolitan Museum of Art <span class="badge badge-iconic">One of the world's greatest museums</span> <span class="badge badge-kids">Knights + mummies</span></div>
+        <div class="event-desc">
+          Take the subway from Columbus Circle to 86th St (4, 5, or 6 line) — 10 minutes. The Met is on Fifth Avenue, facing Central Park.<br><br>
+          <strong>Focused route for kids aged 6–7 (2.5 hours):</strong><br>
+          1. <strong>Arms &amp; Armor</strong> (first floor) → Full suits of armor on horseback, European knights vs. Japanese samurai. The room that makes kids go completely quiet with awe.<br>
+          2. <strong>Egyptian Wing + Temple of Dendur</strong> → A 2,000-year-old Egyptian temple reconstructed inside the museum, lit by a giant glass wall. Mummies, hieroglyphs, the real thing.<br>
+          3. <strong>Rooftop Garden</strong> (weather permitting) → Panoramic views of Central Park and the Manhattan skyline from the 5th floor. One of the best views in the city, included with admission.<br><br>
+          <strong>Tip:</strong> Grab the free family activity booklets at the information desk — they turn the visit into a scavenger hunt for kids. Skip the paintings for now — save those for when the kids are older.<br><br>
+          <strong>Cost note:</strong> Children under 12 always free. Adults $30 (fixed mandatory fee for visitors from Puerto Rico).
+        </div>
+        <div class="event-duration">⏱️ 2.5 hours — focused, not exhaustive</div>
+        <div class="event-cost">💰 $30/adult · Kids under 12 free · Adults only ~$60 total</div>
+      </div>
+      <div class="event eat">
+        <div class="event-time">12:45 PM</div>
+        <div class="event-title">🍔 LUNCH: J.G. Melon <span class="badge badge-local">NYC classic since 1972</span> <span class="badge badge-iconic">Cash only</span></div>
+        <div class="event-desc">5-minute walk from the Met along Third Avenue. J.G. Melon has been on this corner since 1972 — green and white checked tablecloths, dark wood bar, a multigenerational saloon that New Yorkers bring their kids to. The burger is serious. The cottage fries are legendary. <strong>Cash only — bring cash.</strong> No reservations, arrive by 12:45 PM before the line builds.</div>
+        <div class="event-cost">💰 ~$55–70 family · Cash only</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">2:30 – 5:00 PM</div>
+        <div class="event-title">🦕 American Museum of Natural History — Dinosaurs focused <span class="badge badge-reserve">⭐ Book ahead</span> <span class="badge badge-kids">Trip highlight</span></div>
+        <div class="event-desc">
+          Walk or Uber from J.G. Melon to the AMNH (15 min walk or 5 min Uber). Afternoon visit — focused and efficient. The kids have already done the Met this morning so energy matters. Go straight for the dinosaurs.<br><br>
+          <strong>Afternoon route — dinosaurs first, everything else optional:</strong><br>
+          1. Hall of Saurischian Dinosaurs → T-Rex, Allosaurus, Velociraptor<br>
+          2. Hall of Ornithischian Dinosaurs → Triceratops, Stegosaurus<br>
+          3. <strong>The Titanosaur</strong> — 122 feet long, neck touching the ceiling. This is the moment of the day.<br>
+          4. Milstein Hall of Ocean Life → the 94-foot blue whale, if they still have energy<br><br>
+          <strong>Skip the Space Show today</strong> — save it for a rain day. Two museums in one day is already a full achievement. Get in, see the dinosaurs, leave happy.
+        </div>
+        <div class="event-duration">⏱️ 2.5 hours — dinosaurs only, no rushing</div>
+        <div class="event-cost">💰 ~$25 adults / $14 kids · Total family ~$78 (no add-ons today)</div>
+      </div>
+      <div class="event">
+        <div class="event-time">5:30 – 7:00 PM</div>
+        <div class="event-title">🛌 Rest at the hotel — non-negotiable</div>
+        <div class="event-desc">Two museums in one day is ambitious. Walk back to the hotel (7 min from AMNH) and build in real downtime. This is the heaviest day of the trip mentally — the kids need to decompress and so do you. Empire rooftop for the adults, room for the kids.</div>
+      </div>
+      <div class="event eat">
+        <div class="event-time">7:30 PM</div>
+        <div class="event-title">🌮 DINNER: Gabriela's Restaurant &amp; Tequila Bar <span class="badge badge-local">UWS neighborhood favorite</span></div>
+        <div class="event-desc">Mexican restaurant that's been a UWS staple for years. Energetic, family-friendly, great margaritas for the adults, solid food the kids will love. 5-minute walk from the hotel. No travel required — exactly what you need after a big day.</div>
+        <div class="event-cost">💰 ~$70–90 family</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge" style="background:var(--day3);"><span>Day</span>3</div>
+      <div>
+        <div class="day-title">Midtown Done Right</div>
+        <div class="day-zone">📍 Friday Jun 12 · Grand Central · SUMMIT One Vanderbilt · FAO Schwarz</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="event eat">
+        <div class="event-time">8:00 AM</div>
+        <div class="event-title">☕ BREAKFAST: Levain Bakery <span class="badge badge-local">UWS icon</span></div>
+        <div class="event-desc">The most famous cookies in New York — massive, crispy outside, warm and doughy inside. Get one for everyone and eat them walking or at the hotel. The kids will ask for these every morning after the first one. Columbus Ave, 5 min from hotel.</div>
+        <div class="event-cost">💰 ~$5–7 per cookie · Budget $25–30</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">9:30 – 10:15 AM</div>
+        <div class="event-title">🏛️ Grand Central Terminal <span class="badge badge-photo">📸 Photo stop</span> <span class="badge badge-free">Free</span></div>
+        <div class="event-desc">Take the subway from Columbus Circle (A or D line, 4 stops). Grand Central is not a tourist trap — it's genuinely one of the most beautiful buildings in America. The star-painted ceiling, the famous clock, the cathedral scale of the main concourse. The kids will go quiet when they walk in. 30 minutes is enough.</div>
+        <div class="event-duration">⏱️ 30–40 minutes</div>
+        <div class="event-cost">💰 Free · Subway ~$2.90/person</div>
+      </div>
+      <div class="event eat">
+        <div class="event-time">10:30 AM</div>
+        <div class="event-title">🦪 EARLY LUNCH: Grand Central Oyster Bar <span class="badge badge-iconic">Since 1913</span></div>
+        <div class="event-desc">Right inside Grand Central — one of the oldest restaurants in the city, open since 1913. Vaulted tile ceilings, a long marble counter, the best chowder in Manhattan. Order oysters, chowder, and whatever's fresh. The kids can have chowder and fish — the menu has options. This is the kind of place that makes you feel like you're inside New York history.</div>
+        <div class="event-cost">💰 ~$90–120 family · Reserve via OpenTable</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">12:30 – 2:30 PM</div>
+        <div class="event-title">🌆 SUMMIT One Vanderbilt <span class="badge badge-reserve">⭐ Book ahead</span> <span class="badge badge-photo">📸 Photo stop</span></div>
+        <div class="event-desc">
+          <strong>The best observatory experience in NYC for kids.</strong> Not just a view — a full immersive art experience: floor-to-ceiling mirror rooms, glass platforms where you appear to float 1,063 feet above Madison Avenue, a silver balloon room. Kids aged 6–7 think it's actual magic.<br><br>
+          Friday morning slot is less crowded than weekends and cheaper. Skip the "Ascent" glass elevator upgrade — not necessary with young kids.
+        </div>
+        <div class="event-duration">⏱️ 1.5–2 hours</div>
+        <div class="event-cost">💰 ~$44–50/adult · ~$33–38/child · Total family ~$155–175</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">3:00 – 4:30 PM</div>
+        <div class="event-title">🪩 FAO Schwarz <span class="badge badge-kids">Kids highlight</span> <span class="badge badge-iconic">Legendary toy store</span></div>
+        <div class="event-desc">
+          Walk from SUMMIT to 30 Rockefeller Plaza. FAO Schwarz is not just a toy store — it's a destination. The floor piano where Tom Hanks danced in <em>Big</em>. Toy soldiers at the entrance. A curated Hot Wheels section. A LEGO wall. Your kids will remember this.<br><br>
+          You can browse everything without buying — but budget $50–100 if you want. The LEGO NYC exclusive sets (Brooklyn Bridge, Empire State) can't be found in Puerto Rico.
+        </div>
+        <div class="event-duration">⏱️ 1.5 hours</div>
+        <div class="event-cost">💰 Free to enter · Shopping at your discretion</div>
+      </div>
+      <div class="event tip">
+        <div class="event-title">💡 Times Square — the right way</div>
+        <div class="event-desc">You'll pass near Times Square heading back. If anyone wants to see it, do it from an Uber on the way home — the screens and lights through the window are just as impressive without the chaos. One drive-through is the perfect dose for this age group.</div>
+      </div>
+      <div class="event eat">
+        <div class="event-time">7:00 PM</div>
+        <div class="event-title">🍝 DINNER: Carmine's Italian <span class="badge badge-iconic">Family style since 1990</span></div>
+        <div class="event-desc">Legendary family-style Italian. Portions are enormous — one pasta feeds the whole table. The room is loud, which is perfect with kids. On 91st St near Broadway, close to the hotel. Locals celebrate here, not tourists. Reserve for 4.</div>
+        <div class="event-cost">💰 ~$80–100 family · Reserve via OpenTable</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge" style="background:var(--day4);"><span>Day</span>4</div>
+      <div>
+        <div class="day-title">Liberty, Brooklyn, Art &amp; The Mussels</div>
+        <div class="day-zone">📍 Saturday Jun 13 · Battery Park · DUMBO · Brooklyn Bridge · Chelsea · West Village</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="event eat">
+        <div class="event-time">7:30 AM</div>
+        <div class="event-title">☕ BREAKFAST: Quick hotel or nearby deli</div>
+        <div class="event-desc">Early start today — Saturday ferry crowds build fast. Keep breakfast simple and get moving. You'll make up for it at dinner.</div>
+        <div class="event-cost">💰 ~$20–35</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">9:00 AM – 12:30 PM</div>
+        <div class="event-title">🗽 Statue of Liberty + Ellis Island <span class="badge badge-reserve">⭐ Book NOW</span> <span class="badge badge-kids">Kids highlight</span> <span class="badge badge-photo">📸 The NYC moment</span></div>
+        <div class="event-desc">
+          Uber to Battery Park for the first ferry. Saturday is the busiest day — book the 8 or 9 AM departure well in advance.<br><br>
+          <strong>Ticket recommendation:</strong> Pedestal Access (included in the standard reserve ticket) is enough — the view from the pedestal is extraordinary and avoids 354 steps with kids. Crown tickets sell out months ahead anyway.<br><br>
+          <strong>The moment that matters:</strong> When the Statue first emerges from the ferry. Watch your kids' faces. That's the memory.
+        </div>
+        <div class="event-duration">⏱️ ~3 hours total</div>
+        <div class="event-cost">💰 ~$24 adults / $14 kids · Total ~$95–110 · Book at nps.gov/stli</div>
+      </div>
+      <div class="event eat">
+        <div class="event-time">1:00 PM</div>
+        <div class="event-title">🍕 LUNCH: Grimaldi's Pizza, DUMBO <span class="badge badge-iconic">Coal-fired, legendary</span></div>
+        <div class="event-desc">Take the NYC Ferry from Pier 11 (Wall Street) to DUMBO ($4/person — a beautiful ride). Grimaldi's is a 3-minute walk from the DUMBO ferry stop. Coal-fired oven pizza, classic NYC pies. Arrive by 1 PM before the Saturday line gets long.</div>
+        <div class="event-cost">💰 ~$50–65 family · NYC Ferry: $4/person</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">2:30 – 4:30 PM</div>
+        <div class="event-title">🌉 DUMBO + Brooklyn Bridge <span class="badge badge-photo">📸 The NYC photo</span></div>
+        <div class="event-desc">
+          You're already in DUMBO — the most photogenic neighborhood in Brooklyn.<br><br>
+          <strong>The shot:</strong> Stand on Washington Street between Front and Water St. The Manhattan Bridge perfectly frames the end of the street. This is the most copied photo in NYC. Take it.<br><br>
+          Then walk the Brooklyn Bridge toward Manhattan — 20 minutes across, skyline behind you the whole way. Go halfway, take the photos, and walk back or cross to Manhattan. The kids can absolutely do this walk.
+        </div>
+        <div class="event-duration">⏱️ 2 hours</div>
+        <div class="event-cost">💰 Free</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">5:00 – 6:30 PM</div>
+        <div class="event-title">🎨 Artists &amp; Fleas at Chelsea Market <span class="badge badge-local">Local art · fair prices</span> <span class="badge badge-photo">📸 Photo stop</span></div>
+        <div class="event-desc">
+          Uber from DUMBO to Chelsea Market (~20 min). Artists &amp; Fleas is a curated indoor marketplace of local NYC artists and makers inside Chelsea Market — prints, paintings, jewelry, ceramics, handmade goods. This is where you buy original art at real prices, not gallery markups.<br><br>
+          <strong>What to look for:</strong> Original art prints by local artists ($25–$150), watercolors and small paintings ($50–$300), photography prints of NYC ($30–$100). Talk to the artists — they love it and will tell you the story behind the work.<br><br>
+          <strong>Tip:</strong> The lineup rotates weekly so whatever you find is that week's selection. Arrive with an open mind, not a shopping list. The kids can browse too — there's always something that catches their eye.<br><br>
+          After browsing, walk the High Line (elevated park above the market) for 20 minutes before dinner — it's steps away and the West Village views at golden hour are beautiful.
+        </div>
+        <div class="event-duration">⏱️ 1.5 hours · Open daily 11 AM – 7 PM</div>
+        <div class="event-cost">💰 Free to enter · Art from ~$25–$300 · Budget what you're comfortable with</div>
+      </div>
+      <div class="event mussel eat">
+        <div class="event-time">7:00 PM</div>
+        <div class="event-title">🦪 DINNER: Flex Mussels, West Village <span class="badge badge-mussel">🦪 MUSSEL NIGHT</span> <span class="badge badge-local">NYC's best mussels</span></div>
+        <div class="event-desc">
+          <strong>This is your mussel dinner.</strong> Flex Mussels imports directly from Prince Edward Island and serves them in 23 globally-inspired preparations. The <strong>Fra Diavolo</strong> (spicy tomato) and the <strong>Parma</strong> (parmigiano cream, lemon, toasted garlic, crispy shallots) are the standouts. The broth soaked up with bread is the entire point.<br><br>
+          Genuinely family-friendly — kids eat here regularly. Small room, warm atmosphere, serious mussels. Chelsea Market is a 5-minute walk from Flex Mussels — perfect flow after the gallery visit.<br><br>
+          <strong>Reserve well ahead</strong> — small room, Saturday nights fill fast. Ask for the ground floor.
+        </div>
+        <div class="event-cost">💰 ~$90–120 family · Reserve via OpenTable or Resy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-badge" style="background:var(--day5);"><span>Day</span>5</div>
+      <div>
+        <div class="day-title">Hudson Yards &amp; The Last Morning</div>
+        <div class="day-zone">📍 Sunday Jun 14 · Checkout · Hudson Yards · Central Park farewell · JFK</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="event tip">
+        <div class="event-title">💡 Checkout logistics</div>
+        <div class="event-desc">Standard checkout is 12 PM. If late checkout wasn't granted, store luggage with the bell desk and keep moving. Pick up bags before heading to the airport. Check your return flight time and plan backwards.</div>
+      </div>
+      <div class="event eat">
+        <div class="event-time">9:00 AM</div>
+        <div class="event-title">☕ BREAKFAST: Good Enough to Eat <span class="badge badge-local">UWS neighborhood classic</span></div>
+        <div class="event-desc">A proper UWS neighborhood breakfast spot on Amsterdam Ave. Big honest American breakfasts — pancakes, eggs, fresh-squeezed juice. Casual, unhurried, kids welcome. The perfect last morning before checkout. 5-minute walk from the hotel.</div>
+        <div class="event-cost">💰 ~$50–65 family</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">11:00 AM – 1:00 PM</div>
+        <div class="event-title">🏗️ Hudson Yards + The Vessel <span class="badge badge-photo">📸 Photo stop</span></div>
+        <div class="event-desc">
+          NYC's most modern neighborhood. <strong>The Vessel</strong> — a 154-staircase spiral structure unlike anything else on earth — is free to climb but requires online registration in advance.<br><br>
+          The mall has a LEGO Store and toy shops for any last-minute souvenirs. Keep it focused — you're heading to the airport this afternoon.
+        </div>
+        <div class="event-duration">⏱️ 2 hours</div>
+        <div class="event-cost">💰 Vessel free · Shopping at your discretion</div>
+      </div>
+      <div class="event eat">
+        <div class="event-time">1:00 PM</div>
+        <div class="event-title">🥘 LUNCH: Mercado Little Spain, Hudson Yards <span class="badge badge-kids">Great for kids</span></div>
+        <div class="event-desc">José Andrés's Spanish food market — one of the best food experiences in NYC. Jamón, tapas, churros, paella, bocadillos. The kids will love the variety and the churros are non-negotiable. You'll feel right at home. The perfect last meal before flying back to Puerto Rico.</div>
+        <div class="event-cost">💰 ~$55–75 family</div>
+      </div>
+      <div class="event attraction">
+        <div class="event-time">3:00 – 4:30 PM</div>
+        <div class="event-title">🌳 Central Park farewell — Alice in Wonderland <span class="badge badge-kids">Perfect ending</span></div>
+        <div class="event-desc">One last Central Park stop before the airport. The <strong>Alice in Wonderland statue</strong> — kids from around the world climb on Alice, the Mad Hatter, the Cheshire Cat. A magical photo. Rent a rowboat on <strong>The Lake</strong> for 30 minutes if there's time. A quiet, beautiful close to the trip.</div>
+        <div class="event-cost">💰 Rowboat optional: $20/30 min</div>
+      </div>
+      <div class="event tip">
+        <div class="event-title">💡 Airport transfer to JFK</div>
+        <div class="event-desc">Uber XL from Central Park/hotel area to JFK. Allow 60–75 min on a Sunday afternoon. Pick up luggage from the bell desk before ordering the Uber.</div>
+        <div class="event-cost">💰 Uber XL to JFK: ~$75–95</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RAIN PLAN -->
+<div id="rain" class="section">
+  <div class="section-header">
+    <h2>Rain Day Plan</h2>
+    <p>NYC in June has ~40% chance of rain · A rainy day here is never a lost day</p>
+  </div>
+  <div class="rain-banner">
+    <div class="rain-icon">☁️</div>
+    <div>
+      <h3>Good news: NYC is built for rainy days</h3>
+      <p>The best attractions are indoor. Rain clears the streets and fills museums with energy.</p>
+    </div>
+  </div>
+  <div class="info-grid">
+    <div class="info-card" style="border-top-color:var(--day3);">
+      <h3>☁️ Light rain day</h3>
+      <ul>
+        <li><span class="icon">🦕</span> AMNH — the perfect rain plan (if you haven't gone yet)</li>
+        <li><span class="icon">🧩</span> Children's Museum of Manhattan (CMOM) — 5 floors of interactive exhibits for ages 6–10. Water play, art, science. One block from the hotel.</li>
+        <li><span class="icon">🎭</span> IMAX at AMC Lincoln Square — giant screen movies, 3 blocks from hotel</li>
+        <li><span class="icon">🛍️</span> Time Warner Center at Columbus Circle — indoor, air-conditioned, great food court</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--rust);">
+      <h3>🌧️ Heavy rain day</h3>
+      <ul>
+        <li><span class="icon">🚀</span> Intrepid Sea, Air &amp; Space Museum — a real aircraft carrier with fighter jets, a submarine, and the Space Shuttle Enterprise. Kids go silent with awe.</li>
+        <li><span class="icon">🎨</span> The Metropolitan Museum of Art — the Egyptian wing and medieval armory are perfect for this age group</li>
+        <li><span class="icon">🧪</span> New York Hall of Science (Queens) — the most hands-on science museum in the city. 25 min by Uber.</li>
+        <li><span class="icon">🚇</span> NY Transit Museum (Brooklyn) — vintage subway cars kids can explore. Perfect for Hot Wheels fans.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--day5);">
+      <h3>🌦️ Rain in the morning, sun after</h3>
+      <ul>
+        <li><span class="icon">📚</span> NY Public Library Main Branch — the reading room is stunning and free. 5 min from Rockefeller.</li>
+        <li><span class="icon">🧱</span> LEGO Store at Rockefeller Center — NYC exclusive sets, world's largest LEGO store</li>
+        <li><span class="icon">🍫</span> Dylan's Candy Bar — 3 floors of candy near 59th Street. The kids will lose their minds.</li>
+        <li><span class="icon">🌆</span> SUMMIT One Vanderbilt — 100% indoor, rain or shine. Ideal rain day activity.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--gold);">
+      <h3>🔄 Smart rain day swaps</h3>
+      <ul>
+        <li><span class="icon">↔️</span> Rain on Central Park day → swap with AMNH or SUMMIT</li>
+        <li><span class="icon">↔️</span> Rain on Brooklyn Bridge day → swap with Intrepid or the Met</li>
+        <li><span class="icon">↔️</span> Rain on Hudson Yards day → CMOM morning + Time Warner Center</li>
+        <li><span class="icon">☀️</span> Save Statue of Liberty and Brooklyn Bridge for your sunniest day</li>
+      </ul>
+    </div>
+  </div>
+  <div class="alert">
+    <strong>🚫 Avoid in heavy rain:</strong> Statue of Liberty ferry (uncomfortable), Brooklyn Bridge (slippery), Central Park. Reschedule these for sun.
+  </div>
+</div>
+
+<!-- RESTAURANTS -->
+<div id="restaurants" class="section">
+  <div class="section-header">
+    <h2>The Restaurant Guide</h2>
+    <p>Where New Yorkers actually eat · No tourist traps · All family-friendly</p>
+  </div>
+
+  <div class="restaurant-feature">
+    <h3>🦪 The Mussel Destination — Flex Mussels</h3>
+    <p>154 W 13th St, West Village · Saturday Jun 13, dinner · Reserve on OpenTable or Resy<br><br>
+    Direct importers of Prince Edward Island mussels, served in 23 globally-inspired preparations. The Fra Diavolo (spicy tomato broth) and the Parma (parmigiano cream, lemon, toasted garlic, crispy shallots) are the standouts. The broth soaked up with crusty bread is the entire point of the visit. Genuinely family-friendly — young kids eat here all the time. Small room, warm atmosphere, deeply serious about mussels. This is the best mussel restaurant in New York.</p>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card" style="border-top-color:var(--day1);">
+      <h3>Day 1 · Wednesday Jun 10</h3>
+      <ul>
+        <li><span class="icon">🌿</span> <strong>Dinner: Tavern on the Green</strong><br>Inside Central Park. Garden terrace with string lights. Walk from the park. Reserve outdoor terrace 7 PM, party of 4.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--day2);">
+      <h3>Day 2 · Thursday Jun 11</h3>
+      <ul>
+        <li><span class="icon">🥯</span> <strong>Breakfast: Zabar's</strong> — UWS legendary deli since 1934. Bagels, lox, coffee. Amsterdam Ave.</li>
+        <li><span class="icon">🎨</span> <strong>Morning: The Met</strong> — Arms & Armor + Egyptian Wing + Rooftop. $30/adult, kids under 12 free.</li>
+        <li><span class="icon">🍔</span> <strong>Lunch: J.G. Melon</strong> — NYC's iconic burger since 1972. 5 min from the Met. Cash only, no res.</li>
+        <li><span class="icon">🦕</span> <strong>Afternoon: AMNH</strong> — Dinosaurs focused. Titanosaur + T-Rex. ~2.5 hours.</li>
+        <li><span class="icon">🌮</span> <strong>Dinner: Gabriela's</strong> — Solid Mexican, UWS neighborhood spot. 5 min from hotel.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--day3);">
+      <h3>Day 3 · Friday Jun 12</h3>
+      <ul>
+        <li><span class="icon">🍪</span> <strong>Breakfast: Levain Bakery</strong> — The cookies. Columbus Ave, 5 min from hotel.</li>
+        <li><span class="icon">🦪</span> <strong>Lunch: Grand Central Oyster Bar</strong> — Inside Grand Central, since 1913. Chowder + oysters. Reserve via OpenTable.</li>
+        <li><span class="icon">🍝</span> <strong>Dinner: Carmine's Italian</strong> — Family-style enormous portions. Legendary. Reserve for 4.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--day4);">
+      <h3>Day 4 · Saturday Jun 13</h3>
+      <ul>
+        <li><span class="icon">☕</span> <strong>Breakfast: Hotel / quick deli</strong> — Early ferry day. Keep it simple.</li>
+        <li><span class="icon">🍕</span> <strong>Lunch: Grimaldi's, DUMBO</strong> — Coal-fired pizza. Walk from DUMBO ferry stop.</li>
+        <li><span class="icon">🎨</span> <strong>Late afternoon: Artists &amp; Fleas, Chelsea Market</strong> — Local art at real prices. $25–$300. Browse before dinner.</li>
+        <li><span class="icon">🦪</span> <strong>Dinner: Flex Mussels, West Village</strong> — The mussel night. 5 min from Chelsea Market. Reserve weeks ahead.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--day5);">
+      <h3>Day 5 · Sunday Jun 14</h3>
+      <ul>
+        <li><span class="icon">🍳</span> <strong>Breakfast: Good Enough to Eat</strong> — UWS neighborhood classic. Pancakes, eggs, fresh juice.</li>
+        <li><span class="icon">🥘</span> <strong>Lunch: Mercado Little Spain</strong> — José Andrés's Spanish market at Hudson Yards. Churros are mandatory.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--stone);">
+      <h3>🚫 Skip these</h3>
+      <ul>
+        <li><span class="icon">❌</span> Hard Rock Cafe, Ellen's Stardust — tourist traps, mediocre food</li>
+        <li><span class="icon">❌</span> Most Times Square restaurants — overpriced, average</li>
+        <li><span class="icon">⚠️</span> Peter Luger — iconic steak but cash-only, famously brusque, not ideal with young kids</li>
+        <li><span class="icon">⚠️</span> Katz's Deli — legendary but chaotic system and intense weekend crowds. If curious, go at 10:30 AM on a weekday.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RESERVATIONS -->
+<div id="reservations" class="section">
+  <div class="section-header">
+    <h2>Reservations Checklist</h2>
+    <p>Everything to book before you travel · Ordered by urgency</p>
+  </div>
+  <div class="alert">
+    <strong>🚨 CRITICAL:</strong> June is peak season in NYC. Most tickets sell out 2–4 weeks ahead. Book this week — not next week.
+  </div>
+  <ul class="checklist">
+    <li>
+      <div class="check-icon">!</div>
+      <div>
+        <strong>🗽 Statue of Liberty + Ellis Island Ferry</strong><br>
+        <span class="urgency">⚡ BOOK TODAY</span><br>
+        nps.gov/stli — Reserve Ferry with Pedestal Access. Saturday Jun 13, first AM slot (8 or 9 AM). ~$24 adult / $14 child.
+      </div>
+    </li>
+    <li>
+      <div class="check-icon">!</div>
+      <div>
+        <strong>🦪 Flex Mussels, West Village</strong><br>
+        <span class="urgency">⚡ BOOK THIS WEEK</span><br>
+        OpenTable or Resy — Saturday Jun 13, 7 PM, party of 4. Small restaurant, Saturday nights go fast.
+      </div>
+    </li>
+    <li>
+      <div class="check-icon">!</div>
+      <div>
+        <strong>🌆 SUMMIT One Vanderbilt</strong><br>
+        <span class="urgency">⚡ BOOK THIS WEEK</span><br>
+        summitov.com — Timed entry. Friday Jun 12, morning slot. ~$44–50/adult, ~$33–38/child.
+      </div>
+    </li>
+    <li>
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>🦕 American Museum of Natural History</strong><br>
+        <span class="urgency">This week</span><br>
+        amnh.org/plan-your-visit — Thursday Jun 11. Add Hayden Planetarium Space Show + 2026 dinosaur exhibit. ~$25 adult / $14 child.
+      </div>
+    </li>
+    <li>
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>🌿 Tavern on the Green</strong><br>
+        <span class="urgency">This week</span><br>
+        tavernonthegreen.com — Wednesday Jun 10, 7 PM, party of 4, outdoor terrace. Very popular in summer.
+      </div>
+    </li>
+    <li>
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>🦪 Grand Central Oyster Bar</strong><br>
+        <span class="urgency">This week</span><br>
+        OpenTable — Friday Jun 12, 10:30 AM early lunch, party of 4. Inside Grand Central Terminal.
+      </div>
+    </li>
+    <li>
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>🍝 Carmine's Italian</strong><br>
+        <span class="urgency">1–2 weeks ahead</span><br>
+        carminesnyc.com — Friday Jun 12, 7 PM, party of 4.
+      </div>
+    </li>
+    <li>
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>🎨 The Metropolitan Museum of Art</strong><br>
+        <span class="urgency">No reservation needed · Buy at the door</span><br>
+        metmuseum.org — Thursday Jun 11, arrive 10 AM. Adults $30 mandatory (Puerto Rico visitors). Children under 12 always free. No timed entry — walk in any time during open hours (10 AM – 5 PM).
+      </div>
+    </li>
+    <li>
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>🏗️ The Vessel, Hudson Yards</strong><br>
+        <span class="urgency">1 week ahead</span><br>
+        hudsonyardsnewyork.com — Free, but online registration required to climb. Sunday Jun 14.
+      </div>
+    </li>
+  </ul>
+
+  <div class="section-divider"><span>No reservation needed</span></div>
+  <div class="info-grid">
+    <div class="info-card" style="border-top-color:var(--sage);">
+      <h3>✅ Walk-in or free</h3>
+      <ul>
+        <li><span class="icon">🌳</span> Central Park — always free</li>
+        <li><span class="icon">🌉</span> Brooklyn Bridge — free to walk</li>
+        <li><span class="icon">🏛️</span> Grand Central Terminal — free</li>
+        <li><span class="icon">🛍️</span> FAO Schwarz — free to enter</li>
+        <li><span class="icon">🎡</span> Central Park Carousel — pay on site, $4</li>
+        <li><span class="icon">⛵</span> Rowboats at The Lake — pay on site</li>
+        <li><span class="icon">🧱</span> LEGO Store — free to browse</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--rust);">
+      <h3>⚠️ Overrated for this family</h3>
+      <ul>
+        <li><span class="icon">🚫</span> Empire State Building — worse views than SUMMIT, longer lines. Skip.</li>
+        <li><span class="icon">🚫</span> Madame Tussauds — doesn't work well for ages 6–7. Overpriced.</li>
+        <li><span class="icon">🚫</span> Circle Line Cruise — 3 hours is too long for this age group.</li>
+        <li><span class="icon">🚫</span> 9/11 Museum — too emotionally heavy for young kids.</li>
+        <li><span class="icon">⚠️</span> Top of the Rock — good, but redundant if you're doing SUMMIT.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- BUDGET -->
+<div id="budget" class="section">
+  <div class="section-header">
+    <h2>Estimated Budget</h2>
+    <p>4 people · 2 adults + 2 kids · 5 days · Mid-to-high curated spend</p>
+  </div>
+  <div class="alert alert-gold">
+    <strong>📌 Note:</strong> June 2026 estimates for <strong>4 people (2 adults + 2 children)</strong>. Restaurant figures are for full meals without premium drinks. Hotel not included — Empire is already booked.
+  </div>
+  <table class="budget-table">
+    <thead>
+      <tr><th>Category</th><th>Detail</th><th class="amount">Estimate</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>🎨 The Metropolitan Museum of Art</td><td>Admission 2A · Kids under 12 free</td><td class="amount">$60</td></tr>
+      <tr><td>🦕 AMNH</td><td>Admission 2A + 2K · Afternoon focused visit (no Space Show)</td><td class="amount">$78–95</td></tr>
+      <tr><td>🌆 SUMMIT One Vanderbilt</td><td>4 tickets (2A + 2K), Friday morning slot</td><td class="amount">$155–175</td></tr>
+      <tr><td>🗽 Statue of Liberty</td><td>Reserve ferry + Pedestal Access × 4</td><td class="amount">$95–115</td></tr>
+      <tr><td>🎡 Central Park</td><td>Carousel × 4 + rowboats</td><td class="amount">$40–60</td></tr>
+      <tr><td>🏗️ Hudson Yards</td><td>Vessel free · Edge observatory optional</td><td class="amount">$0–155</td></tr>
+      <tr><td>🍽️ Restaurants (5 days)</td><td>~15 meals · 4 people · Local iconic mix</td><td class="amount">$850–1,100</td></tr>
+      <tr><td>🚗 Transport</td><td>Uber XL × 2 airport + daily Ubers + subway + ferry</td><td class="amount">$200–260</td></tr>
+      <tr><td>✈️ Flights SJU → JFK</td><td>JetBlue B6 904, 4 people, round-trip (ref. only)</td><td class="amount">$800–1,200</td></tr>
+      <tr><td>🛍️ Shopping / Souvenirs</td><td>FAO Schwarz, LEGO Store, AMNH shop</td><td class="amount">$150–300</td></tr>
+      <tr><td>💊 Buffer</td><td>Snacks, spontaneous entries, emergencies</td><td class="amount">$120–180</td></tr>
+    </tbody>
+    <tfoot>
+      <tr class="total"><td colspan="2"><strong>TOTAL ESTIMATED (hotel not included)</strong></td><td class="amount"><strong>$2,640–3,800</strong></td></tr>
+    </tfoot>
+  </table>
+  <div class="section-divider"><span>Where to spend and where to save</span></div>
+  <div class="info-grid">
+    <div class="info-card" style="border-top-color:var(--sage);">
+      <h3>💡 Save without sacrificing</h3>
+      <ul>
+        <li><span class="icon">🎟️</span> NYC Explorer Pass (3–7 attractions) — can bundle SUMMIT + Liberty + AMNH at a discount</li>
+        <li><span class="icon">🍕</span> Keep lunches casual — delis and food halls in NYC are excellent and half the price</li>
+        <li><span class="icon">🚇</span> Subway where practical — faster than Uber in rush hour and a real NYC experience</li>
+        <li><span class="icon">⛴️</span> NYC Ferry ($4/person) to Brooklyn instead of Uber — cheaper and beautiful</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--gold);">
+      <h3>✨ Worth spending more on</h3>
+      <ul>
+        <li><span class="icon">🗽</span> Statue of Liberty — Pedestal access is the full experience, worth it</li>
+        <li><span class="icon">🦕</span> AMNH Space Show — the planetarium at this age is almost transcendent</li>
+        <li><span class="icon">🦪</span> Flex Mussels — don't skip this dinner, it's the food highlight of the trip</li>
+        <li><span class="icon">🌆</span> SUMMIT over Empire State — better experience, similar price</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TOP 10 -->
+<div id="top10" class="section">
+  <div class="section-header">
+    <h2>Top 10 Memories They'll Keep Forever</h2>
+    <p>The moments your kids will still talk about when they're adults</p>
+  </div>
+  <div class="top10-grid">
+    <div class="top10-item">
+      <div class="top10-num">01</div>
+      <div class="top10-content">
+        <h4>Standing under the Titanosaur</h4>
+        <p>122 feet of dinosaur, neck touching the ceiling. The scale is incomprehensible. Kids go completely silent. That silence is the memory.</p>
+      </div>
+    </div>
+    <div class="top10-item">
+      <div class="top10-num">02</div>
+      <div class="top10-content">
+        <h4>Floating over Manhattan at SUMMIT</h4>
+        <p>Glass platforms suspended 1,063 feet above Madison Avenue. Walking on air above the most famous city in the world. Ages 6–7 think it's actual magic.</p>
+      </div>
+    </div>
+    <div class="top10-item">
+      <div class="top10-num">03</div>
+      <div class="top10-content">
+        <h4>The FAO Schwarz floor piano</h4>
+        <p>The same piano where Tom Hanks danced in Big. Your kids will dance on it. A photo they'll show when they're grown.</p>
+      </div>
+    </div>
+    <div class="top10-item">
+      <div class="top10-num">04</div>
+      <div class="top10-content">
+        <h4>The Statue appearing from the ferry</h4>
+        <p>The moment she first emerges from the horizon. Watch your kids' faces at that exact second. That's the photograph and the memory at once.</p>
+      </div>
+    </div>
+    <div class="top10-item">
+      <div class="top10-num">05</div>
+      <div class="top10-content">
+        <h4>Walking the Brooklyn Bridge</h4>
+        <p>The wind, the stone towers, the full Manhattan skyline behind you. One of the most cinematic experiences any city on earth offers.</p>
+      </div>
+    </div>
+    <div class="top10-item">
+      <div class="top10-num">06</div>
+      <div class="top10-content">
+        <h4>The Space Show at the Hayden Planetarium</h4>
+        <p>Reclining seats, the entire universe unfolding overhead. For kids this age it borders on a spiritual experience.</p>
+      </div>
+    </div>
+    <div class="top10-item">
+      <div class="top10-num">07</div>
+      <div class="top10-content">
+        <h4>Climbing Alice in Wonderland</h4>
+        <p>Kids from around the world climb on Alice, the Mad Hatter, the Cheshire Cat in Central Park. A magical corner of the park that belongs to the children.</p>
+      </div>
+    </div>
+    <div class="top10-item">
+      <div class="top10-num">08</div>
+      <div class="top10-content">
+        <h4>The mussels at Flex</h4>
+        <p>The broth, the bread, the 23 preparations. For the adults, the food memory of the trip. The kids will remember the warm room and the enormous pots.</p>
+      </div>
+    </div>
+    <div class="top10-item">
+      <div class="top10-num">09</div>
+      <div class="top10-content">
+        <h4>The 94-foot blue whale</h4>
+        <p>Suspended from the ceiling — 21,000 pounds of the largest animal that ever lived, hanging overhead. The museum kid will want to stay under it forever.</p>
+      </div>
+    </div>
+    <div class="top10-item">
+      <div class="top10-num">10</div>
+      <div class="top10-content">
+        <h4>The first Levain cookie</h4>
+        <p>Walking down Columbus Ave on a June morning, warm cookie in hand. Small moments become rituals. They'll ask for Levain every time they're in New York for the rest of their lives.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRO TIPS -->
+<div id="tips" class="section">
+  <div class="section-header">
+    <h2>Pro Tips</h2>
+    <p>What only people who've done NYC with young kids know · Mistakes to avoid</p>
+  </div>
+  <div class="info-grid">
+    <div class="info-card" style="border-top-color:var(--gold);">
+      <h3>🎒 Pace &amp; logistics</h3>
+      <ul>
+        <li><span class="icon">⏰</span> <strong>Eat early, move early:</strong> Lunch at 12 PM when places open. The 1–2 PM rush doubles wait times.</li>
+        <li><span class="icon">🌡️</span> June in NYC hits 88–92°F. Carry water in thermoses from the hotel every day.</li>
+        <li><span class="icon">🎒</span> Pack snacks in the bag — quick food options on the street are expensive.</li>
+        <li><span class="icon">👟</span> Proper walking shoes for the kids, not sandals. Active days mean 4–6 miles on foot.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--rust);">
+      <h3>🚫 Classic mistakes</h3>
+      <ul>
+        <li><span class="icon">❌</span> <strong>6+ activities in one day.</strong> With ages 6–7, 2–3 is the real ceiling.</li>
+        <li><span class="icon">❌</span> <strong>Times Square on foot at night.</strong> Extreme crowds, aggressive vendors, sensory overload for kids.</li>
+        <li><span class="icon">❌</span> <strong>Missing the Washington St DUMBO photo.</strong> It's the most iconic NYC shot you'll ever take.</li>
+        <li><span class="icon">❌</span> Not booking Liberty tickets early. Saturday summer ferries sell out weeks ahead.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--sage);">
+      <h3>🚇 Smart transport</h3>
+      <ul>
+        <li><span class="icon">🚇</span> Subway is safe and fast. Lines A/C/D from Columbus Circle cover 80% of Manhattan. Load a MetroCard or use a contactless card.</li>
+        <li><span class="icon">🚕</span> Uber XL for airport runs and when the kids are exhausted.</li>
+        <li><span class="icon">⛴️</span> NYC Ferry ($4/person) to Brooklyn — scenic, cheap, the kids love it.</li>
+        <li><span class="icon">🚶</span> Your hotel zone is the most walkable in NYC. Hotel → AMNH → Central Park all on foot.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--day5);">
+      <h3>📸 Shots you cannot miss</h3>
+      <ul>
+        <li><span class="icon">📸</span> Washington St + Manhattan Bridge, DUMBO — the NYC photo</li>
+        <li><span class="icon">📸</span> Bethesda Fountain, Central Park — fountain with the lake behind</li>
+        <li><span class="icon">📸</span> Brooklyn Bridge mid-span — full skyline behind you</li>
+        <li><span class="icon">📸</span> SUMMIT mirror rooms — infinite reflections with the kids</li>
+        <li><span class="icon">📸</span> Under the Titanosaur looking straight up</li>
+        <li><span class="icon">📸</span> Alice in Wonderland statue — kids climbing, colorful, magical</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--day3);">
+      <h3>🧩 For their specific interests</h3>
+      <ul>
+        <li><span class="icon">🚗</span> <strong>Hot Wheels:</strong> FAO Schwarz has a curated section. AMNH shop also carries quality die-cast.</li>
+        <li><span class="icon">🧱</span> <strong>LEGO:</strong> LEGO Store at Rockefeller — NYC exclusive sets you can't find in Puerto Rico. Budget $50–100.</li>
+        <li><span class="icon">🦕</span> <strong>Dinosaurs:</strong> The AMNH gift shop is the best dinosaur store on earth. Figures, fossils, books, playsets.</li>
+        <li><span class="icon">🔬</span> <strong>Museum kid:</strong> Consider Children's Museum of Manhattan (CMOM) as a bonus — 5 min from hotel, 5 floors of interactive science.</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top-color:var(--stone);">
+      <h3>🌙 For the two of you</h3>
+      <ul>
+        <li><span class="icon">🥂</span> Empire Hotel Rooftop — Happy Hour M–F 2–6 PM while the kids rest. Stunning views.</li>
+        <li><span class="icon">🌉</span> Two adults makes the Brooklyn Bridge easier — one ahead with the kids, one behind managing pace and bags.</li>
+        <li><span class="icon">🔄</span> Build in 1 hotel hour each afternoon (3–4 PM). Non-negotiable. It's what makes the evenings good.</li>
+        <li><span class="icon">🦪</span> The Flex Mussels dinner is as much for you as for the kids. Savor it.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="alert alert-sage">
+    <strong>🎯 Most important tip:</strong> Your Upper West Side base is a strategic advantage. The UWS has everything — real neighborhood feel, AMNH steps away, Central Park one block over, subway access anywhere. Treat the hotel as home base without apology. Let the city come to you.
+  </div>
+</div>
+
+<footer>
+  Built for <em>a family that travels with intention</em> · NYC June 10–14, 2026<br>
+  Empire Hotel, Upper West Side · JetBlue B6 904 · SJU → JFK · 2 adults + 2 kids · 🦪 Flex Mussels, West Village
+</footer>
+
+<script>
+  function showTab(name) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(name).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
